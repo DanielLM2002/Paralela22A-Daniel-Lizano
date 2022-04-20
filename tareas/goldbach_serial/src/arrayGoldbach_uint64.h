@@ -6,20 +6,20 @@
 #include <assert.h>
 #include <stddef.h>
 
-typedef struct arrayGoldbach_uint64{
+typedef struct array_uint64{
     uint64_t contar;
     uint64_t capacidad;
     uint64_t* elemento;
-} arrayGoldbach_uint64_t;
+} array_uint64_t;
 
-void arrayGoldbach_uint64_init(arrayGoldbach_uint64_t* array);
+void arrayGoldbach_uint64_init(array_uint64_t* array);
 
-void arrayGoldbach_uint64_destroy(arrayGoldbach_uint64_t* array);
+void arrayGoldbach_uint64_destroy(array_uint64_t* array);
 
-void arrayGoldbach_uint64_add(arrayGoldbach_uint64_t* array, uint64_t elemento);
+void arrayGoldbach_uint64_add(array_uint64_t* array, uint64_t elemento);
 
-void arrayGoldbach_uint64_get_elements(arrayGoldbach_uint64_t* array);
+void arrayGoldbach_uint64_get_elements(array_uint64_t* array);
 
-void arrayGoldbach_uint64_get_count(arrayGoldbach_uint64_t* array);
+void arrayGoldbach_uint64_get_count(array_uint64_t* array);
 
 #endif ARRAYGOLDBACH_H
