@@ -78,7 +78,10 @@ bool validar_par(char* entrada){
     return estado;//retorno de estado booleano
 }
 
-
+uint64_t get_valores(char* entrada){//guardamos entrada como entero de 64 bits
+    uint64_t valor = (uint64_t) atoi(entrada);
+    return valor;
+}
 
 
 void sumas_run(sumas_t* sumas){//validacion de campo
