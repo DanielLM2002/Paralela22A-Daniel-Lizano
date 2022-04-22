@@ -28,7 +28,8 @@ void array_uint64_add(array_uint64_t* array, uint64_t elemento){
 void aumentar_tamaño(array_uint64_t* array){
     assert(array);
     uint64_t nuevaCapacidad = 10 * (array -> capacidad ? array -> capacidad : 1);
-    uint64_t* nuevosElementos = (uint64_t*) realloc(array-> elemento, nuevaCapacidad * sizeof(uint64_t));
+    uint64_t* nuevosElementos = (uint64_t*) realloc(array-> elemento, 
+        nuevaCapacidad * sizeof(uint64_t));
     if (nuevosElementos){
         array -> capacidad = nuevaCapacidad;
         array -> elemento = nuevosElementos;
