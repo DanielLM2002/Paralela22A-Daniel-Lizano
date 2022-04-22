@@ -7,11 +7,12 @@
 #include <stdbool.h>
 #include <inttypes.h>
 #include <ctype.h>
+#include "validaciones_numeros.h"
 #include "array_uint64.h"
 
 typedef struct sumas sumas_t;
 
-sumas_t* sumas_create(char* entrada);
+sumas_t* sumas_create(char* dato);
 
 void sumas_run(sumas_t* sumas);
 
