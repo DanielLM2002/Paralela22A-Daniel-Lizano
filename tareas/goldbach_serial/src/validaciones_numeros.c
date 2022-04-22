@@ -26,5 +26,18 @@ bool validar_primo(uint64_t numero){
         if (numero % x == 0) return false;
     }
     return true;
+}
 
+bool es_fuerte(uint64_t numero){
+    if (validar_primo(numero) == true ){
+        return true;
+    }
+    else {return false;}
+}
+
+bool es_debil(uint64_t numero){
+    if (validar_primo == false){
+        return true;
+    }
+    else {return false;}
 }
