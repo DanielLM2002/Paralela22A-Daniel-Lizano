@@ -43,7 +43,9 @@ array_uint64_t obtener_sumas(bool es_par, uint64_t numero,
 uint64_t obtener_conteo(bool es_par, array_uint64_t suma);
 
 sumas_t* sumas_create(char* entrada){
+    //iniciar campos de sumas
     sumas_t* sumas = (sumas_t*) calloc(1, sizeof(sumas_t));
+
     sumas -> entrada = entrada;
     sumas -> valor = 0;
     sumas -> contar = 0;
@@ -53,10 +55,36 @@ sumas_t* sumas_create(char* entrada){
     sumas -> es_par = false;
     array_uint64_init(&sumas -> numeros_primos);
     array_uint64_init(&sumas -> suma);
-    if (sumas -> es_valido){
+    if (sumas -> es_valido){//estado booleano de la estructura
         sumas -> valor = get_valores(sumas -> entrada);
         sumas -> es_par = validar_par(sumas -> entrada);
         sumas -> es_negativo = validar_negativo(sumas -> entrada);
     }
-    return sumas;
+    return sumas; //retorno de la esctructura
+}
+
+bool validar_negativo(char* entrada){
+    if(entrada[0] == '-')//condicional para detectar negativos
+        return true;
+    else 
+        return false;
+}
+
+bool validar_par(char* entrada){
+    bool estado = false;
+    uint64_t valor = get_valores(entrada);//obtener valor para condicional
+    if(valor % 2 == 0)//condicional para definir estado
+        estado = true;
+    return estado;//retorno de estado booleano
+}
+
+
+
+
+void sumas_run(sumas_t* sumas){//validacion de campo
+    assert(sumas);
+
+    if(sumas -> es_valido){ //valido = true
+        return 0;
+    }
 }
