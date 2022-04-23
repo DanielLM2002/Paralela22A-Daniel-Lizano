@@ -8,7 +8,9 @@
 #include <inttypes.h>
 #include <ctype.h>
 
-
+typedef struct array_lectura{
+    
+}array_lectura_t;
 
 
 
