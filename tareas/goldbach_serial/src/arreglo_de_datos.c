@@ -5,7 +5,8 @@
 
 typedef struct arreglo_nodo{
 
-    arreglo_nodo_t arreglo_sumas;
+    
+    arreglo_de_datos_t arreglo_sumas;
 
     arreglo_nodo_t* next;
 
@@ -35,13 +36,24 @@ arreglo_nodo_t* get_siguiente(arreglo_nodo_t* nodo){
     return nodo -> next;
 }
 
-int64_t insert(arreglo_de_datos_t* arreglo, int64_t value, int valid){
+int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid){
     assert(arreglo);
     int error = EXIT_SUCCESS;
-    arreglo_nodo_t* new_nodo = (arreglo_nodo_t*) calloc(1, sizeof(arreglo_nodo_t));
+    arreglo_nodo_t* new_nodo = (arreglo_nodo_t *) calloc(1, 
+                                sizeof(arreglo_nodo_t));
     if(new_nodo){
         new_nodo -> value = value;
         new_nodo -> position = 1;
         new_nodo -> validate = valid;
+        arreglo_init(&new_nodo -> arreglo_sumas);
+
+        if(arreglo -> cola == NULL){
+            arreglo -> cabeza = new_nodo;
+            arreglo -> cola = new_nodo;
+        }
+        else{
+            arreglo -> cola -> next = new_nodo;
+
+        }
     }
 }

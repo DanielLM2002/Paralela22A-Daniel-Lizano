@@ -10,7 +10,7 @@ typedef struct arreglo_nodo arreglo_nodo_t;
 
 typedef struct arreglo_de_datos{
     arreglo_nodo_t* cabeza;
-    arreglo_de_datos_t* cola;
+    arreglo_nodo_t* cola;
     uint64_t* elemento;
 } arreglo_de_datos_t;
 
@@ -22,7 +22,7 @@ int64_t get_posicion_arreglo(arreglo_nodo_t* nodo);
 
 arreglo_nodo_t* get_siguiente(arreglo_nodo_t* nodo);
 
-int64_t insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
+int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
 
 arreglo_de_datos_t get_arreglo_sumas_goldbach(arreglo_de_datos_t* nodo);
 
