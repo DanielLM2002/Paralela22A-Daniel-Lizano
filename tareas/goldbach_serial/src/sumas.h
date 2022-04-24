@@ -6,9 +6,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <inttypes.h>
-#include <ctype.h>
-#include "validaciones_numeros.h"
-#include "array_uint64.h"
+#include "arreglo_de_datos.h"
 
 typedef struct sumas sumas_t;
 
