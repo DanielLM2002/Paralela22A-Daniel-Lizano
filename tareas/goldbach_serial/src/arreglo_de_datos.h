@@ -22,7 +22,7 @@ int64_t get_posicion_arreglo(arreglo_nodo_t* nodo);
 
 arreglo_nodo_t* get_siguiente(arreglo_nodo_t* nodo);
 
-int64_t insert(arreglo_de_datos_t* arreglo, int64_t value);
+int64_t insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
 
 arreglo_de_datos_t get_arreglo_sumas_goldbach(arreglo_de_datos_t* nodo);
 
