@@ -16,7 +16,7 @@ Si el número es impar, este se puede escribir como la suma de tres números pri
     Ejemplos de esto se ven de la siguiente manera: 7 = 2 + 2 + 3, 9 = 2+ 2 + 5
 ```
 
-Este proyecto tiene como fin  demostrar la veracidad matemática de estas conjeturas, si no realizar los cálculos de todas las posibles sumas que pueden tener cada número y notificarle al usuario según lo que este desié cuantas hay y cuáles son.
+Este proyecto no tiene como fin  demostrar la veracidad matemática de estas conjeturas, si no realizar los cálculos de todas las posibles sumas que pueden tener cada número y notificarle al usuario según lo que este desié cuantas hay y cuáles son.
 
 El proyecto se realizará en en lenguage C y trabajará de manera que se leerá un archivo de texto através de la entrada estándar. La manera en la que entre el número en el .TXT hará que el programa despligue información diferente, si el número ingresado es positivo solo se desplegará la cantidad de sumas posibles, si el número es negativo se desplegará el número de sumas posibles y cuales son estas.
 
