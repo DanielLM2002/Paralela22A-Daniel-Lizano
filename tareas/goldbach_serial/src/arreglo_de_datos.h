@@ -24,9 +24,9 @@ arreglo_nodo_t* get_siguiente(arreglo_nodo_t* nodo);
 
 int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
 
-arreglo_de_datos_t get_arreglo_sumas_goldbach(arreglo_de_datos_t* nodo);
+arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_t* nodo);
 
-arreglo_de_datos_t search(arreglo_de_datos_t* arreglo, int64_t value);
+arreglo_nodo_t* search(arreglo_de_datos_t arreglo, int64_t value);
 
 void nodo_destroy(arreglo_nodo_t* nodo);
 

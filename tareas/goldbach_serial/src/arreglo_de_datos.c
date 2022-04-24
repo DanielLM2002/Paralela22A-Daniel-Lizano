@@ -53,7 +53,49 @@ int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid){
         }
         else{
             arreglo -> cola -> next = new_nodo;
-
+            arreglo -> cola = arreglo -> cola -> next;
         }
+    }else{
+        error = EXIT_FAILURE;
+        fprintf(stderr,"Nos quedamos sin espacio de memoria");
     }
+    return error;
+}
+
+arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_t* nodo){
+    return &nodo->arreglo_sumas;
+}
+
+int nodo_validate(arreglo_nodo_t* nodo){
+    return nodo ->validate;
+}
+
+arreglo_nodo_t* search(arreglo_de_datos_t* arreglo, int64_t searching){
+    assert(arreglo);
+    arreglo_nodo_t* actual = arreglo ->cabeza;
+    while(actual->value && actual != searching){
+        actual = actual -> next;
+    }
+    return actual;
+}
+void nodo_destroy(arreglo_nodo_t* nodo){
+    nodo->value =0;
+    nodo_destroy(&nodo->arreglo_sumas);
+    free(nodo);
+}
+
+void arreglo_destroy(arreglo_de_datos_t* arreglo){
+    assert(arreglo);
+    arreglo_nodo_t* actual = arreglo->cabeza;
+    arreglo_nodo_t* borrar = NULL;
+    while(actual){
+        borrar = actual -> next;
+        nodo_destroy(actual);
+        actual = borrar;
+    }
+    arreglo->cabeza=NULL;
+    arreglo->cola=NULL;
+}
+int nodo_validate(arreglo_nodo_t* nodo){
+    return nodo->validate;
 }
