@@ -8,7 +8,7 @@
 #include <inttypes.h>
 #include <ctype.h>
 #include <string.h>
-#include "array_uint64.h"
+
 
 bool validaciones(char* dato);
 

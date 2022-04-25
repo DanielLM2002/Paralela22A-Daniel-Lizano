@@ -8,14 +8,11 @@
 #include <inttypes.h>
 #include "arreglo_de_datos.h"
 
-typedef struct sumas sumas_t;
+int sumas_total(arreglo_de_datos_t* arreglo);
 
-sumas_t* sumas_create(char* dato);
+int suma_de_numeros(arreglo_de_datos_t* array_sums, int64_t number);
 
-void sumas_run(sumas_t* sumas);
+int suma_de_pares(arreglo_de_datos_t* array_sums, int64_t number);
 
-void sumas_print(sumas_t* sumas);
-
-void sumas_destroy(sumas_t* sumas);
 
 #endif
