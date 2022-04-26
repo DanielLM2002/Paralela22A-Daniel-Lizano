@@ -9,9 +9,9 @@
 typedef struct arreglo_nodo arreglo_nodo_t;
 
 typedef struct arreglo_de_datos{
-    arreglo_nodo_t* head;
-    arreglo_nodo_t* tail;
-    uint64_t* element;
+    arreglo_nodo_t* cabeza;
+    arreglo_nodo_t* cola;
+    uint64_t* elemento;
 } arreglo_de_datos_t;
 
 void arreglo_init(arreglo_de_datos_t* arreglo);
@@ -26,7 +26,7 @@ int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
 
 arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_t* nodo);
 
-arreglo_nodo_t* search(arreglo_de_datos_t arreglo, int64_t value);
+arreglo_nodo_t* search(arreglo_de_datos_t* arreglo, int64_t value);
 
 void nodo_destroy(arreglo_nodo_t* nodo);
 
