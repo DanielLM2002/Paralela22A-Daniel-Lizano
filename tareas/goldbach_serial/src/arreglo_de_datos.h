@@ -34,4 +34,5 @@ void arreglo_destroy(arreglo_de_datos_t* arreglo);
 
 int nodo_validate(arreglo_nodo_t* nodo);
 
+int array_insertion (arreglo_de_datos_t* arreglo, int64_t value, int valid);
 #endif

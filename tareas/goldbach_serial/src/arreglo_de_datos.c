@@ -99,3 +99,10 @@ void arreglo_destroy(arreglo_de_datos_t* arreglo){
 int nodo_validate(arreglo_nodo_t* nodo){
     return nodo->validate;
 }
+
+int array_insertion (arreglo_de_datos_t* arreglo, int64_t value, int valid){
+    assert(arreglo);
+    int error = EXIT_SUCCESS;
+    error = cola_insertar(arreglo, value, valid);
+    return error;
+}
