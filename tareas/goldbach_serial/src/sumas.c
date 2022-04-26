@@ -74,5 +74,9 @@ int suma_impar(arreglo_de_datos_t* array_sums, int64_t number){
 }
 
 int suma_goldbach_numero(arreglo_de_datos_t* array_sums, int64_t number){
-    
+    if(number % 2 ==0){
+        return suma_par(array_sums, number);
+    }else{
+        return suma_impar(array_sums, number);
+    }
 }
