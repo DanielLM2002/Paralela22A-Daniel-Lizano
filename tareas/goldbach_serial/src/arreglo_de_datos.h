@@ -9,9 +9,9 @@
 typedef struct arreglo_nodo arreglo_nodo_t;
 
 typedef struct arreglo_de_datos{
-    arreglo_nodo_t* cabeza;
-    arreglo_nodo_t* cola;
-    uint64_t* elemento;
+    arreglo_nodo_t* head;
+    arreglo_nodo_t* tail;
+    uint64_t* element;
 } arreglo_de_datos_t;
 
 void arreglo_init(arreglo_de_datos_t* arreglo);
