@@ -20,8 +20,8 @@ typedef struct arreglo_nodo{
 
 void arreglo_init(arreglo_de_datos_t* arreglo){
     assert(arreglo);
-    arreglo -> cabeza = NULL;
-    arreglo -> cola = NULL;
+    arreglo -> head = NULL;
+    arreglo -> tail = NULL;
 }
 
 int64_t get_value_arreglo(arreglo_nodo_t* arreglo){
@@ -47,13 +47,13 @@ int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid){
         new_nodo -> validate = valid;
         arreglo_init(&new_nodo -> arreglo_sumas);
 
-        if(arreglo -> cola == NULL){
-            arreglo -> cabeza = new_nodo;
-            arreglo -> cola = new_nodo;
+        if(arreglo -> tail == NULL){
+            arreglo -> head = new_nodo;
+            arreglo -> tail = new_nodo;
         }
         else{
-            arreglo -> cola -> next = new_nodo;
-            arreglo -> cola = arreglo -> cola -> next;
+            arreglo -> tail -> next = new_nodo;
+            arreglo -> tail = arreglo -> tail -> next;
         }
     }else{
         error = EXIT_FAILURE;
@@ -72,7 +72,7 @@ int nodo_validate(arreglo_nodo_t* nodo){
 
 arreglo_nodo_t* search(arreglo_de_datos_t* arreglo, int64_t searching){
     assert(arreglo);
-    arreglo_nodo_t* actual = arreglo ->cabeza;
+    arreglo_nodo_t* actual = arreglo ->head;
     while(actual->value && actual != searching){
         actual = actual -> next;
     }
@@ -86,15 +86,15 @@ void nodo_destroy(arreglo_nodo_t* nodo){
 
 void arreglo_destroy(arreglo_de_datos_t* arreglo){
     assert(arreglo);
-    arreglo_nodo_t* actual = arreglo->cabeza;
+    arreglo_nodo_t* actual = arreglo->head;
     arreglo_nodo_t* borrar = NULL;
     while(actual){
         borrar = actual -> next;
         nodo_destroy(actual);
         actual = borrar;
     }
-    arreglo->cabeza=NULL;
-    arreglo->cola=NULL;
+    arreglo->head=NULL;
+    arreglo->tail=NULL;
 }
 int nodo_validate(arreglo_nodo_t* nodo){
     return nodo->validate;
