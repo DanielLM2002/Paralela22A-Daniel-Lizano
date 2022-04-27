@@ -1,50 +1,27 @@
 #ifndef ENTRADA_H
 #define ENTRADA_H
-#include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <assert.h>
-#include <stdbool.h>
+#include <stdio.h>
+#include <errno.h>
 #include <inttypes.h>
-#include <ctype.h>
+#include "arreglo_de_datos.h"
 
-typedef struct array_nodo{//queue node
-    uint64_t elemento;
-    array_nodo_t* siguiente;
-    uint64_t contador;
-    uint64_t numero_invalido;
-}array_nodo_t;
+typedef struct entrada{
+    int error;
+}entrada_t;
 
-typedef struct array_lectura array_lectura_t;
+void entrada_init(entrada_t* entry);
 
-typedef struct array_lectura{//queue data
-    array_nodo_t* cabeza;
-    array_nodo_t* cola;
-}array_lectura_t;
+void entrada_get_file(entrada_t* entry, arreglo_de_datos_t* array);
 
-void array_lectura_init(array_nodo_t* array_nodo);
+void entrada_validate(int64_t* is_valid);
 
-uint64_t array_lectura_append(array_lectura_t* array_lectura, uint64_t valor,
-                                uint64_t numero_invalido);
+void entrada_print(arreglo_de_datos_t* array);
 
-uint64_t array_lectura_insert(array_lectura_t* array_lectura, uint64_t valor,
-                                uint64_t numero_invalido);
+void entrada_print_sumas(arreglo_nodo_t* current, int64_t value);
 
-array_nodo_t* array_lectura_buscar(array_lectura_t* actual, uint64_t valor);
+void get_sumas_entrada(arreglo_nodo_t* current, int64_t value);
 
-void array_lectura_destroy(array_lectura_t* array_lectura);
-
-void array_nodo_destroy(array_nodo_t* array_nodo);
-
-uint64_t array_nodo_obtener_elemento(array_nodo_t* nodo);
-
-uint64_t array_nodo_obtener_contador(array_nodo_t* nodo);
-
-
-
-
-
-
-
+int64_t run();
 
 #endif
