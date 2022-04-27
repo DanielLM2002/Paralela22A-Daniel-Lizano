@@ -9,7 +9,7 @@
 typedef struct entrada{
     int error;
     int64_t correct_values;
-    bool correct;
+    int64_t correct;
 }entrada_t;
 
 void entrada_init(entrada_t* entry);
