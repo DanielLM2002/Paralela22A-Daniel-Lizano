@@ -96,9 +96,7 @@ void arreglo_destroy(arreglo_de_datos_t* arreglo){
     arreglo->cabeza=NULL;
     arreglo->cola=NULL;
 }
-int nodo_validate(arreglo_nodo_t* nodo){
-    return nodo->validate;
-}
+
 
 int array_insertion (arreglo_de_datos_t* arreglo, int64_t value, int valid){
     assert(arreglo);
