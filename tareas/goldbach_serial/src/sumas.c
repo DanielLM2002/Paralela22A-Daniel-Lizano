@@ -13,7 +13,7 @@ int suma_goldbach_total(arreglo_de_datos_t* array){
         array_goldbach_actual = get_arreglo_sumas_goldbach(current_position);
         value = get_value_arreglo(current_position);
         if(value < 0){
-            value = value + (value* -2);
+            value = value + (value * -2);
         }
 
         else if(value > 5 && get_arreglo_sumas_goldbach(current_position) == 0){
