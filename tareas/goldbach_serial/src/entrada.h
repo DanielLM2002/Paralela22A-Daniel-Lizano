@@ -8,6 +8,8 @@
 
 typedef struct entrada{
     int error;
+    int64_t correct_values;
+    bool correct;
 }entrada_t;
 
 void entrada_init(entrada_t* entry);
