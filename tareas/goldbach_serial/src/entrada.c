@@ -93,7 +93,38 @@ void entrada_print(arreglo_de_datos_t* array){
             get_sumas_entrada(actual, aux_value);
             if(value < -5){
                 aux_value = value + (value * -2);
+                entrada_print_sumas(actual, aux_value);
             }
+            fprintf(stdout, "\n");
         }
+        actual = get_siguiente(actual);
     }
 }
+
+void get_sumas_entrada(arreglo_nodo_t* actual, int64_t value){
+    bool impar = true;
+    if(value % 2 == 0){impar = true;}
+    int counter = 0;
+    int aux = 0;
+    arreglo_nodo_t* current_sum = get_arreglo_sumas_goldbach(actual)->cabeza;
+    while(current_sum){
+        if(impar){
+            ++counter;
+        }
+        if(counter == 3){
+            counter = 0;
+            ++aux;
+        }
+        else{
+            if(counter == 2){
+                counter = 0;
+                ++aux;
+            }
+        }
+        current_sum = get_siguiente(current_sum);
+    }
+    fprintf(stdout, "%i sums: ", aux);
+}
+
+
+
