@@ -1,0 +1,43 @@
+#include de librerias
+
+procedure arreglo_init(arreglo) {
+    cabeza del arreglo = null;
+    final del arreglo = null;
+end 
+}
+
+procedure get_value_arreglo(arreglo) {
+    return valor del arreglo;
+}
+
+procedure get_posicion_arreglo(nodo) {
+    return posicion del nodo;
+}
+
+procedure get_siguiente(nodo) {
+    return nodo get_siguiente;
+}
+
+procedure insert(arreglo, valor, valido) {
+    revisar si hay nodos e insertar nuevo nodo
+}
+
+procedure get_arreglo_sumas_goldbach(nodo) {
+    return nodo con las sumas 
+}
+
+procedure nodo_validate(nodo) {
+    retorna la validacion 
+}
+
+procedure nodo destroy(nodo) {
+    destruye el nodo y manda el nodo a destruir al arreglo
+}
+
+procedure arreglo_destroy(array) {
+    destruye el arreglo por completo
+}
+
+procedure array_insertion(array,value,validate) {
+    inserta en el arreglo
+}

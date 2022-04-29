@@ -1,0 +1,19 @@
+procedure suma_goldbach_total(array) {
+    se encargar de hacer la sumatoria total
+}
+proceudre suma_prima(number) {
+    identifica si es una suma de numeros primos y realiza 
+    la conjetura
+}
+
+procedure suma_par(number) {
+    identifica si la suma es par y la realiza
+}
+procedure suma_impar(number) {
+    identifica si la suma es impar y realiza la conjetura
+}
+
+procedure suma_goldbach_numero(array, number) {
+    revisa que conjetura realizar
+}
+
