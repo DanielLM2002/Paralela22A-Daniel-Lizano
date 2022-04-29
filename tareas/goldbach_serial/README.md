@@ -40,3 +40,8 @@ El proyecto se realizará en en lenguage C y trabajará de manera que se leerá 
 -9: 2 SUMS: 2+2+5, 3+3+3
 ```
 
+Para poder correr el programa se usa un makefile incluido en los archivos del proyecto, este makefile compilará el programa y generará el ejecutable que quedará dentro de la carpeta Bin, usaremos la siguiente linea en la terminal.
+```
+bin\goldbach_serial < test/input001.txt
+```
+Siendo la barra de test los casos de prueba que se usarán para la revisión del programa. 

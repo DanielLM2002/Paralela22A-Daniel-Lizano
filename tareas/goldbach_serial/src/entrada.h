@@ -8,13 +8,11 @@
 
 typedef struct entrada{
     int error;
-    int64_t correct_values;
-    int64_t correct;
 }entrada_t;
 
-void entrada_init(entrada_t* entry);
+void entrada_init(entrada_t* entrada);
 
-void entrada_get_file(entrada_t* entry, arreglo_de_datos_t* array);
+void entrada_get_file(entrada_t* entrada, arreglo_de_datos_t* array);
 
 void entrada_validate(int64_t* is_valid);
 
