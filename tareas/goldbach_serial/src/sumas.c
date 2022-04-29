@@ -29,7 +29,7 @@ int suma_goldbach_total(arreglo_de_datos_t* array) {
 }
 
 bool suma_prima(int64_t number) {
-    bool result;
+    bool result = true;
     if (number >= 2) {
         result = true;
         int64_t max = number - 1;
