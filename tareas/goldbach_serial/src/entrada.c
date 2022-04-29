@@ -35,12 +35,7 @@ void entrada_get_file(entrada_t* entrada, arreglo_de_datos_t* array) {
         }
     }
 }
-void ignore_line() {
-    char ignore = '\0';
-    while (ignore != EOF && ignore != '\n') {
-        ignore = fgetc(stdin);
-    }
-}
+
 
 void entrada_validate(int64_t* is_valid) {
     if (errno == ERANGE) {
