@@ -1,3 +1,97 @@
+# C/C++ Makefile v2.4.0 2021-Nov-16 Jeisson Hidalgo ECCI-UCR CC-BY 4.0
+
+# Compiler and tool flags
+CC=gcc
+XC=g++
+DEFS=
+CSTD=-std=gnu11
+XSTD=-std=gnu++11
+FLAG=
+FLAGS=$(strip -Wall -Wextra $(FLAG) $(DEFS))
+FLAGC=$(FLAGS) $(CSTD)
+FLAGX=$(FLAGS) $(XSTD)
+LIBS=
+LINTF=-build/header_guard,-build/include_subdir
+LINTC=$(LINTF),-readability/casting
+LINTX=$(LINTF),-build/c++11,-runtime/references
+ARGS=
+
+# Directories
+BIN_DIR=bin
+OBJ_DIR=build
+DOC_DIR=doc
+SRC_DIR=src
+TST_DIR=tests
+
+# If src/ dir does not exist, use current directory .
+ifeq "$(wildcard $(SRC_DIR) )" ""
+	SRC_DIR=.
+endif
+
+# Files
+DIRS=$(shell find -L $(SRC_DIR) -type d)
+APPNAME=$(shell basename $(shell pwd))
+HEADERC=$(wildcard $(DIRS:%=%/*.h))
+HEADERX=$(wildcard $(DIRS:%=%/*.hpp))
+SOURCEC=$(wildcard $(DIRS:%=%/*.c))
+SOURCEX=$(wildcard $(DIRS:%=%/*.cpp))
+INPUTFC=$(strip $(HEADERC) $(SOURCEC))
+INPUTFX=$(strip $(HEADERX) $(SOURCEX))
+INPUTCX=$(strip $(INPUTFC) $(INPUTFX))
+OBJECTC=$(SOURCEC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJECTX=$(SOURCEX:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+OBJECTS=$(strip $(OBJECTC) $(OBJECTX))
+TESTINF=$(wildcard $(TST_DIR)/input*.txt)
+TESTOUT=$(TESTINF:$(TST_DIR)/input%.txt=$(OBJ_DIR)/output%.txt)
+INCLUDE=$(DIRS:%=-I%)
+DEPENDS=$(OBJECTS:%.o=%.d)
+IGNORES=$(BIN_DIR) $(OBJ_DIR) $(DOC_DIR)
+EXEFILE=$(BIN_DIR)/$(APPNAME)
+EXEARGS=$(strip $(EXEFILE) $(ARGS))
+LD=$(if $(SOURCEC),$(CC),$(XC))
+
+# Targets
+default: debug
+all: doc lint memcheck helgrind test
+debug: FLAGS += -g
+debug: $(EXEFILE)
+release: FLAGS += -O3 -DNDEBUG
+release: $(EXEFILE)
+asan: FLAGS += -fsanitize=address -fno-omit-frame-pointer
+asan: debug
+msan: FLAGS += -fsanitize=memory
+msan: CC = clang
+msan: XC = clang++
+msan: debug
+tsan: FLAGS += -fsanitize=thread
+tsan: debug
+ubsan: FLAGS += -fsanitize=undefined
+ubsan: debug
+
+-include *.mk $(DEPENDS)
+.SECONDEXPANSION:
+
+# Linker call
+$(EXEFILE): $(OBJECTS) | $$(@D)/.
+	$(LD) $(FLAGS) $(INCLUDE) $^ -o $@ $(LIBS)
+
+# Compile C source file
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $$(@D)/.
+	$(CC) -c $(FLAGC) $(INCLUDE) -MMD $< -o $@
+
+# Compile C++ source file
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $$(@D)/.
+	$(XC) -c $(FLAGX) $(INCLUDE) -MMD $< -o $@
+
+# Create a subdirectory if not exists
+.PRECIOUS: %/.
+%/.:
+	mkdir -p $(dir $@)
+
+# Test cases
+.PHONY: test
+test: $(EXEFILE) $(TESTOUT)
+
 $(OBJ_DIR)/output%.txt: SHELL:=/bin/bash
 $(OBJ_DIR)/output%.txt: $(TST_DIR)/input%.txt $(TST_DIR)/output%.txt
 	icdiff --no-headers $(word 2,$^) <($(EXEARGS) < $<)
@@ -17,11 +111,29 @@ ifneq ($(INPUTFX),)
 	cpplint --filter=$(LINTX) $(INPUTFX)
 endif
 
+memcheck: bin/goldbach_serial
+	valgrind --tool=memcheck --leak-check=full bin/goldbach_serial
+
+.PHONY: asan #invalid access & memory leaks
+asan: src/main.c
+	cc -g -Wall -Wextra -fsanitize=address src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
+
+.PHONY: msan #uninitialized memory
+msan: src/main.c
+	clang -g -Wall -Wextra -fsanitize=memory src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
+
+.PHONY: tsan #thread sanitizer
+tsan: src/main.c
+	cc -g -Wall -Wextra -fsanitize=thread src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
+
+.PHONY: ubsan #undefined behavior
+ubsan: src/main.c
+	cc -g -Wall -Wextra -fsanitize=undefined src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
+
+
+
 run: $(EXEFILE)
 	$(EXEARGS)
-
-memcheck: $(EXEFILE)
-	valgrind --tool=memcheck $(EXEARGS)
 
 helgrind: $(EXEFILE)
 	valgrind --quiet --tool=helgrind $(EXEARGS)
