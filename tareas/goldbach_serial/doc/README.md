@@ -1,1 +1,52 @@
+# TAREA 1
+## GOLDBACH 
+### primer ciclo 2022
+#### --------
 
+Este repositorio contiene el proyecto de las sumas de Goldbach seriales.
+El problema consiste en que para todo número entero mayor que 5 suceden una de las siguientes dos cosas: 
+```
+Si el número es par, este se puede escribir como la suma de dos números primos.
+
+    Ejemplos de esto se ven de la sigueinte manera: 6 = 3 + 3, 8 = 4 + 4
+
+Si el número es impar, este se puede escribir como la suma de tres números primos.
+
+    Ejemplos de esto se ven de la siguiente manera: 7 = 2 + 2 + 3, 9 = 2+ 2 + 5
+```
+
+Este proyecto no tiene como fin  demostrar la veracidad matemática de estas conjeturas, si no realizar los cálculos de todas las posibles sumas que pueden tener cada número y notificarle al usuario según lo que este desié cuantas hay y cuáles son.
+
+El proyecto se realizará en en lenguage C y trabajará de manera que se leerá un archivo de texto através de la entrada estándar. La manera en la que entre el número en el .TXT hará que el programa despligue información diferente, si el número ingresado es positivo solo se desplegará la cantidad de sumas posibles, si el número es negativo se desplegará el número de sumas posibles y cuales son estas.
+
+*EJEMPLO DE ENTRADA*
+```
+1
+2
+6
+-6
+9
+-9
+```
+
+*SALIDA ESPERADA*
+```
+1: NA
+2: NA
+6: 1 SUMS
+-6: 1 SUMS: 3+3
+9: 2 SUMS
+-9: 2 SUMS: 2+2+5, 3+3+3
+```
+
+En este programa contaremos con 3 clases que harán el trabajo por nosotros
+
+# Clases: 
+## arreglo_de_datos
+Esta clase se encargará de darnos el arreglo que trabajaremos durante todo el programa
+
+## sumas
+Sumas se encargará de hacer lo que dice su nombre, realizar las sumas, tambien revisará las el tipo de conjetura y si la entrada es valida
+
+## entrada
+Entrada se encargará de agarrar el arreglo que tenemos en sumas y mandarlo al usuario para que vea el resultado final, pero este además tambien se encargará de recibir el archivo y mandarlo a sumas para que este realice los cálculos.
