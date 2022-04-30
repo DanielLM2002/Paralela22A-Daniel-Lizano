@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Clase encargada de definir los metodos para la clase entrada
+ * 
+ */
 #ifndef ENTRADA_H
 #define ENTRADA_H
 #include <stdlib.h>
@@ -6,7 +11,7 @@
 #include <inttypes.h>
 #include "arreglo_de_datos.h"
 
-typedef struct entrada{
+typedef struct entrada {
     int error;
 }entrada_t;
 
@@ -53,7 +58,11 @@ void entrada_print_sumas(arreglo_nodo_t* current, int64_t value);
  * @param value 
  */
 void get_sumas_entrada(arreglo_nodo_t* current, int64_t value);
-
+/**
+ * @brief metodo para correr el programa
+ * 
+ * @return int64_t 
+ */
 int64_t run();
 
 #endif

@@ -1,3 +1,9 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Clase encargada de definir los metodos
+ * para la clase de sumas
+ * 
+ */
 #ifndef SUMAS_H
 #define SUMAS_H
 #include <stdio.h>

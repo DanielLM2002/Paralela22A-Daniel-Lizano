@@ -1,3 +1,9 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Clase encargada de definir los metodos de la clase
+ * arreglo de datos
+ * 
+ */
 #ifndef ARREGLO_DE_DATOS_H
 #define ARREGLO_DE_DATOS_H
 #include <stdint.h>
@@ -8,7 +14,7 @@
 
 typedef struct arreglo_nodo arreglo_nodo_t;
 
-typedef struct arreglo_de_datos{
+typedef struct arreglo_de_datos {
     arreglo_nodo_t* cabeza;
     arreglo_nodo_t* cola;
     uint64_t* elemento;
@@ -104,5 +110,5 @@ int nodo_validate(arreglo_nodo_t* nodo);
  * @param valid 
  * @return int 
  */
-int array_insertion (arreglo_de_datos_t* arreglo, int64_t value, int valid);
+int array_insertion(arreglo_de_datos_t* arreglo, int64_t value, int valid);
 #endif
