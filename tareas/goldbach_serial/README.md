@@ -49,3 +49,7 @@ Siendo la barra de test los casos de prueba que se usarán para la revisión del
 *Agradecimientos y créditos*
 Gracias al profesor Jeisson por manetener la página de donde pude sacar información para este proyecto, y también por dar un ejemplo en java sobre como realizr los cálculos.
 Obtenido de https://jeisson.ecci.ucr.ac.cr/principios/2013b/examenes/examen01/Goldbach2.java. 
+
+Contáctame
+Correo: daniel.lizanomorales@ucr.ac.cr
+Teléfono: 83035686
