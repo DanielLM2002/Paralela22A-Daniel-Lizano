@@ -6,6 +6,7 @@
  */
 #include "entrada.h"
 #include "sumas.h"
+#include <stdlib.h>
 
 void entrada_init(entrada_t* entrada) {
     entrada->error = EXIT_SUCCESS;
