@@ -1,0 +1,17 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/daniel/Documents/GitHub/Paralela22A-Daniel-Lizano/tareas/goldbach_serial'
+ 
+mkdir -p build/
+ 
+gcc -c -Wall -Wextra -pthread -g -std=gnu11 -Isrc -MMD src/arreglo_de_datos.c -o build/arreglo_de_datos.o
+ 
+gcc -c -Wall -Wextra -pthread -g -std=gnu11 -Isrc -MMD src/entrada.c -o build/entrada.o
+ 
+gcc -c -Wall -Wextra -pthread -g -std=gnu11 -Isrc -MMD src/main.c -o build/main.o
+ 
+gcc -c -Wall -Wextra -pthread -g -std=gnu11 -Isrc -MMD src/sumas.c -o build/sumas.o
+mkdir -p bin/
+ 
+gcc -Wall -Wextra -pthread -g -Isrc build/arreglo_de_datos.o build/entrada.o build/main.o build/sumas.o -lm -o bin/goldbach_serial 
+make: Leaving directory '/home/daniel/Documents/GitHub/Paralela22A-Daniel-Lizano/tareas/goldbach_serial'
+ 

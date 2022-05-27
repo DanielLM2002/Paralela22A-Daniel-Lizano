@@ -50,10 +50,10 @@ void entrada_validate(int64_t* is_valid) {
     }
 }
 
-void entrada_print_sumas(arreglo_nodo_t* current, int64_t value) {
+void entrada_print_sumas(arreglo_nodo_cola_t* current, int64_t value) {
     int64_t position = 0;
     int64_t number = 0;
-    arreglo_nodo_t* current_sum = get_arreglo_sumas_goldbach(current)->cabeza;
+    arreglo_nodo_cola_t* current_sum = get_arreglo_sumas_goldbach(current)->primero;
     bool impar = true;
     if (value % 2 == 0) {
         impar = false;
@@ -82,7 +82,7 @@ void entrada_print_sumas(arreglo_nodo_t* current, int64_t value) {
 }
 
 void entrada_print(arreglo_de_datos_t* array) {
-    arreglo_nodo_t* actual = array->cabeza;
+    arreglo_nodo_cola_t* actual = array->primero;
     int64_t value = 0;
     int64_t aux_value = 0;
 
@@ -107,14 +107,14 @@ void entrada_print(arreglo_de_datos_t* array) {
     }
 }
 
-void get_sumas_entrada(arreglo_nodo_t* actual, int64_t value) {
+void get_sumas_entrada(arreglo_nodo_cola_t* actual, int64_t value) {
     bool impar = true;
     if (value % 2 == 0) {
         impar = true;
     }
     int counter = 0;
     int aux = 0;
-    arreglo_nodo_t* current_sum = get_arreglo_sumas_goldbach(actual)->cabeza;
+    arreglo_nodo_cola_t* current_sum = get_arreglo_sumas_goldbach(actual)->primero;
     while (current_sum) {
         if (impar) {
             ++counter;

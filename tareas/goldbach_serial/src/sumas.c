@@ -11,7 +11,7 @@
 
 int suma_goldbach_total(arreglo_de_datos_t* array) {
     int64_t value = 0;
-    arreglo_nodo_t* current_position = array -> cabeza;
+    arreglo_nodo_cola_t* current_position = array -> primero;
     arreglo_de_datos_t* array_goldbach_actual = NULL;
     int error = EXIT_SUCCESS;
 

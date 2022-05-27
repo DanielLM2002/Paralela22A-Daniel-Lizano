@@ -12,11 +12,11 @@
 #include <assert.h>
 #include <stddef.h>
 
-typedef struct arreglo_nodo arreglo_nodo_t;
+typedef struct arreglo_nodo_cola arreglo_nodo_cola_t;
 
 typedef struct arreglo_de_datos {
-    arreglo_nodo_t* cabeza;
-    arreglo_nodo_t* cola;
+    arreglo_nodo_cola_t* primero;
+    arreglo_nodo_cola_t* ultimo;
     uint64_t* elemento;
 } arreglo_de_datos_t;
 /**
@@ -33,7 +33,7 @@ void arreglo_init(arreglo_de_datos_t* arreglo);
  * @param arreglo 
  * @return int64_t 
  */
-int64_t get_value_arreglo(arreglo_nodo_t* arreglo);
+int64_t get_value_arreglo(arreglo_nodo_cola_t* arreglo);
 
 /**
  * @brief obtiene la posicion del actual del nodo del arreglo
@@ -41,7 +41,7 @@ int64_t get_value_arreglo(arreglo_nodo_t* arreglo);
  * @param nodo 
  * @return int64_t 
  */
-int64_t get_posicion_arreglo(arreglo_nodo_t* nodo);
+int64_t get_posicion_arreglo(arreglo_nodo_cola_t* nodo);
 
 /**
  * @brief obtener el siguiente nodo
@@ -49,7 +49,7 @@ int64_t get_posicion_arreglo(arreglo_nodo_t* nodo);
  * @param nodo 
  * @return arreglo_nodo_t* 
  */
-arreglo_nodo_t* get_siguiente(arreglo_nodo_t* nodo);
+arreglo_nodo_cola_t* get_siguiente(arreglo_nodo_cola_t* nodo);
 
 /**
  * @brief method para poder insertar un char valido 
@@ -67,7 +67,7 @@ int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
  * @param nodo 
  * @return arreglo_de_datos_t* 
  */
-arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_t* nodo);
+arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_cola_t* nodo);
 
 /**
  * @brief se encarga de buscar el valor deseado dentro del arreglo
@@ -76,7 +76,7 @@ arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_t* nodo);
  * @param searching 
  * @return arreglo_nodo_t* 
  */
-arreglo_nodo_t* search(arreglo_de_datos_t* arreglo, int64_t value);
+arreglo_nodo_cola_t* search(arreglo_de_datos_t* arreglo, int64_t value);
 
 /**
  * @brief se encarga de destruir unicamente el nodo actual en el
@@ -84,7 +84,7 @@ arreglo_nodo_t* search(arreglo_de_datos_t* arreglo, int64_t value);
  * 
  * @param nodo 
  */
-void nodo_destroy(arreglo_nodo_t* nodo);
+void nodo_destroy(arreglo_nodo_cola_t* nodo);
 
 /**
  * @brief se encarga de destruir el arreglo completamente 
@@ -99,7 +99,7 @@ void arreglo_destroy(arreglo_de_datos_t* arreglo);
  * @param nodo 
  * @return int 
  */
-int nodo_validate(arreglo_nodo_t* nodo);
+int nodo_validate(arreglo_nodo_cola_t* nodo);
 
 /**
  * @brief se encarga de dar la validacion de que es posible meterlo en

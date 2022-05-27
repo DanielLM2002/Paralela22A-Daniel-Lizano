@@ -49,7 +49,7 @@ void entrada_print(arreglo_de_datos_t* array);
  * @param value 
  */
 
-void entrada_print_sumas(arreglo_nodo_t* current, int64_t value);
+void entrada_print_sumas(arreglo_nodo_cola_t* current, int64_t value);
 
 /**
  * @brief hecho para obtener las sumas para mandarlas a imprimir
@@ -57,7 +57,7 @@ void entrada_print_sumas(arreglo_nodo_t* current, int64_t value);
  * @param current 
  * @param value 
  */
-void get_sumas_entrada(arreglo_nodo_t* current, int64_t value);
+void get_sumas_entrada(arreglo_nodo_cola_t* current, int64_t value);
 /**
  * @brief metodo para correr el programa
  * 
