@@ -6,11 +6,11 @@ XC=g++
 DEFS=
 CSTD=-std=gnu11
 XSTD=-std=gnu++11
-FLAG=
-FLAGS=$(strip -Wall -Wextra $(FLAG) $(DEFS))
+FLAG= 
+FLAGS=$(strip -Wall -Wextra -pthread $(DEFS))
 FLAGC=$(FLAGS) $(CSTD)
 FLAGX=$(FLAGS) $(XSTD)
-LIBS=
+LIBS= 
 LINTF=-build/header_guard,-build/include_subdir
 LINTC=$(LINTF),-readability/casting
 LINTX=$(LINTF),-build/c++11,-runtime/references
@@ -73,7 +73,7 @@ ubsan: debug
 
 # Linker call
 $(EXEFILE): $(OBJECTS) | $$(@D)/.
-	$(LD) $(FLAGS) $(INCLUDE) $^ -o $@ $(LIBS)
+	$(LD) $(FLAGS) $(INCLUDE) $^ -lm -o $@ $(LIBS)
 
 # Compile C source file
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $$(@D)/.
@@ -111,29 +111,11 @@ ifneq ($(INPUTFX),)
 	cpplint --filter=$(LINTX) $(INPUTFX)
 endif
 
-memcheck: bin/goldbach_serial
-	valgrind --tool=memcheck --leak-check=full bin/goldbach_serial
-
-.PHONY: asan #invalid access & memory leaks
-asan: src/main.c
-	cc -g -Wall -Wextra -fsanitize=address src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
-
-.PHONY: msan #uninitialized memory
-msan: src/main.c
-	clang -g -Wall -Wextra -fsanitize=memory src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
-
-.PHONY: tsan #thread sanitizer
-tsan: src/main.c
-	cc -g -Wall -Wextra -fsanitize=thread src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
-
-.PHONY: ubsan #undefined behavior
-ubsan: src/main.c
-	cc -g -Wall -Wextra -fsanitize=undefined src/main.c src/sumas.c src/entrada.c src/arreglo_de_datos.c -o bin/goldbach_serial
-
-
-
 run: $(EXEFILE)
 	$(EXEARGS)
+
+memcheck: $(EXEFILE)
+	valgrind --tool=memcheck $(EXEARGS)
 
 helgrind: $(EXEFILE)
 	valgrind --quiet --tool=helgrind $(EXEARGS)
