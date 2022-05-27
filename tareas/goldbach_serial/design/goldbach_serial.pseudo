@@ -1,0 +1,16 @@
+procedure goldbach_serial
+    init arreglo
+    datos = get_entrada_file(.txt)
+    verdad = validate(datos)
+    if (verdad)
+        if es_par(datos)
+            do conjetura fuerte
+            insert_arreglo(arreglo)
+        if es_impar
+            do conjetura debil
+            insert_arreglo(arreglo)
+        
+    else
+        ignorar
+    print arreglo
+    
