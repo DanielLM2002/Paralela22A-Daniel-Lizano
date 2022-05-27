@@ -19,7 +19,7 @@
  * @param array 
  * @return int 
  */
-int suma_goldbach_total(arreglo_de_datos_t* array);
+int suma_goldbach_total(array_t* array);
 /**
  * @brief metodo para revisar si la suma es par
  * 
@@ -27,7 +27,7 @@ int suma_goldbach_total(arreglo_de_datos_t* array);
  * @param number 
  * @return int 
  */
-int suma_par(arreglo_de_datos_t* array_sums, int64_t number);
+int suma_par(array_t* array_sums, int64_t number);
 /**
  * @brief meter los numeros en el arreglo
  * 
@@ -35,7 +35,7 @@ int suma_par(arreglo_de_datos_t* array_sums, int64_t number);
  * @param number 
  * @return int 
  */
-int suma_goldbach_numero(arreglo_de_datos_t* array_sums, int64_t number);
+int suma_goldbach_numero(array_t* array_sums, int64_t number);
 /**
  * @brief revisar si la suma es de numeros primos
  * 
@@ -51,6 +51,6 @@ bool suma_prima(int64_t number);
  * @param number 
  * @return int 
  */
-int suma_impar(arreglo_de_datos_t* array_sums, int64_t number);
+int suma_impar(array_t* array_sums, int64_t number);
 
 #endif

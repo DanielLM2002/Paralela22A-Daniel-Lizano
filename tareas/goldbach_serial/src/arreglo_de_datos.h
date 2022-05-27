@@ -6,109 +6,37 @@
  */
 #ifndef ARREGLO_DE_DATOS_H
 #define ARREGLO_DE_DATOS_H
-#include <stdint.h>
-#include <stdlib.h>
-#include <stdio.h>
 #include <assert.h>
-#include <stddef.h>
+#include <stdlib.h>
+#include <stdint.h>
 
-typedef struct arreglo_nodo_cola arreglo_nodo_cola_t;
+typedef struct nodo_arreglo nodo_arrego_t;
 
-typedef struct arreglo_de_datos {
-    arreglo_nodo_cola_t* primero;
-    arreglo_nodo_cola_t* ultimo;
-    uint64_t* elemento;
-} arreglo_de_datos_t;
-/**
- * @brief inicia el arreglo a usar en el programa  
- * @details realiza el assert para poder iniciar el arreglo 
- * 
- * @param arreglo 
- */
-void arreglo_init(arreglo_de_datos_t* arreglo);
+typedef struct arreglo {
+  nodo_arrego_t * primero; 
+  nodo_arrego_t * ultimo;
+}arreglo_t;
 
-/**
- * @brief obtiene los valores de el arreglo
- * 
- * @param arreglo 
- * @return int64_t 
- */
-int64_t get_value_arreglo(arreglo_nodo_cola_t* arreglo);
+void arreglo_init(arreglo_t * arreglo);
 
-/**
- * @brief obtiene la posicion del actual del nodo del arreglo
- * 
- * @param nodo 
- * @return int64_t 
- */
-int64_t get_posicion_arreglo(arreglo_nodo_cola_t* nodo);
+int64_t arreglo_nodo_conseguir_valor (nodo_arrego_t* arreglo);
 
-/**
- * @brief obtener el siguiente nodo
- * 
- * @param nodo 
- * @return arreglo_nodo_t* 
- */
-arreglo_nodo_cola_t* get_siguiente(arreglo_nodo_cola_t* nodo);
+int64_t arreglo_nodo_conseguir_posicion (nodo_arrego_t* arreglo);
 
-/**
- * @brief method para poder insertar un char valido 
- * dento del arreglo
- * 
- * @param arreglo 
- * @param value 
- * @param valid 
- * @return int 
- */
-int insert(arreglo_de_datos_t* arreglo, int64_t value, int valid);
+nodo_arrego_t* arreglo_nodo_conseguir_siguiente(nodo_arrego_t * nodo);
 
-/**
- * @brief obtiene el arreglo que sera usado en el sistema de suma 
- * @param nodo 
- * @return arreglo_de_datos_t* 
- */
-arreglo_de_datos_t* get_arreglo_sumas_goldbach(arreglo_nodo_cola_t* nodo);
+arreglo_t* arreglo_nodo_conseguir_cola_goldbach(nodo_arrego_t * nodo);
 
-/**
- * @brief se encarga de buscar el valor deseado dentro del arreglo
- * 
- * @param arreglo 
- * @param searching 
- * @return arreglo_nodo_t* 
- */
-arreglo_nodo_cola_t* search(arreglo_de_datos_t* arreglo, int64_t value);
+nodo_arrego_t* arreglo_buscar (arreglo_t* arreglo, int64_t valor);
 
-/**
- * @brief se encarga de destruir unicamente el nodo actual en el
- * se encuentra
- * 
- * @param nodo 
- */
-void nodo_destroy(arreglo_nodo_cola_t* nodo);
+int arreglo_insertar (arreglo_t* arreglo, int64_t valor, int validez);
 
-/**
- * @brief se encarga de destruir el arreglo completamente 
- * 
- * @param arreglo 
- */
-void arreglo_destroy(arreglo_de_datos_t* arreglo);
+int arreglo_posible_insertar (arreglo_t* arreglo, int64_t valor, int validez);
 
-/**
- * @brief se encarga de verificar que el item del nodo sea valido
- * 
- * @param nodo 
- * @return int 
- */
-int nodo_validate(arreglo_nodo_cola_t* nodo);
+void arreglo_destruir (arreglo_t* arreglo);
 
-/**
- * @brief se encarga de dar la validacion de que es posible meterlo en
- * el arreglo
- * 
- * @param arreglo 
- * @param value 
- * @param valid 
- * @return int 
- */
-int array_insertion(arreglo_de_datos_t* arreglo, int64_t value, int valid);
+void arreglo_nodo_destruir (nodo_arrego_t* nodo_arreglo);
+
+int arreglo_nodo_conseguir_validez(nodo_arrego_t * nodo);
+
 #endif

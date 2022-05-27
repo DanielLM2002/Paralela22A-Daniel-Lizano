@@ -13,7 +13,7 @@ void entrada_init(entrada_t* entrada) {
 }
 
 int64_t run(entrada_t* entrada) {
-    arreglo_de_datos_t array;
+    array_t array;
     arreglo_init(&array);
 
     entrada_get_file(entrada, &array);
@@ -26,7 +26,7 @@ int64_t run(entrada_t* entrada) {
     return entrada-> error;
 }
 
-void entrada_get_file(entrada_t* entrada, arreglo_de_datos_t* array) {
+void entrada_get_file(entrada_t* entrada, array_t* array) {
     int64_t current_value = 0;
     int64_t valid = 0;
     while (feof(stdin) == 0) {
@@ -60,8 +60,8 @@ void entrada_print_sumas(arreglo_nodo_cola_t* current, int64_t value) {
     }
     int64_t counter = 0;
     while (current_sum) {
-        position = get_posicion_arreglo(current_sum);
-        number = get_value_arreglo(current_sum);
+        position = get_posicion_nodo_cola(current_sum);
+        number = get_value_nodo_cola(current_sum);
         if (position > 0) {
             fprintf(stdout, "%ld + ", number);
             number = 0;
@@ -81,13 +81,13 @@ void entrada_print_sumas(arreglo_nodo_cola_t* current, int64_t value) {
     }
 }
 
-void entrada_print(arreglo_de_datos_t* array) {
+void entrada_print(array_t* array) {
     arreglo_nodo_cola_t* actual = array->primero;
     int64_t value = 0;
     int64_t aux_value = 0;
 
     while (actual) {
-        value = get_value_arreglo(actual);
+        value = get_value_nodo_cola(actual);
         if (nodo_validate(actual)) {
             fprintf(stdout, "%ld: NA\n", value);
         }

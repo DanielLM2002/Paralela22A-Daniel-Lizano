@@ -9,15 +9,15 @@
 #include <stdint.h>
 #include "sumas.h"
 
-int suma_goldbach_total(arreglo_de_datos_t* array) {
+int suma_goldbach_total(array_t* array) {
     int64_t value = 0;
     arreglo_nodo_cola_t* current_position = array -> primero;
-    arreglo_de_datos_t* array_goldbach_actual = NULL;
+    array_t* array_goldbach_actual = NULL;
     int error = EXIT_SUCCESS;
 
     while (current_position && error ==0) {
         array_goldbach_actual = get_arreglo_sumas_goldbach(current_position);
-        value = get_value_arreglo(current_position);
+        value = get_value_nodo_cola(current_position);
         if (value < 0) {
             value = value + (value * -2);
         }
@@ -47,7 +47,7 @@ bool suma_prima(int64_t number) {
     return result;
 }
 
-int suma_par(arreglo_de_datos_t* array_sums, int64_t number) {
+int suma_par(array_t* array_sums, int64_t number) {
     int error = EXIT_SUCCESS;
     for (int64_t i = 2; i < number; ++i) {
         if (suma_prima(i) == true) {
@@ -62,7 +62,7 @@ int suma_par(arreglo_de_datos_t* array_sums, int64_t number) {
     return error;
 }
 
-int suma_impar(arreglo_de_datos_t* array_sums, int64_t number) {
+int suma_impar(array_t* array_sums, int64_t number) {
     int error = EXIT_FAILURE;
     for (int64_t iterator = 2; iterator < number; ++iterator) {
         if (suma_prima(iterator) == true) {
@@ -84,7 +84,7 @@ int suma_impar(arreglo_de_datos_t* array_sums, int64_t number) {
     return error;
 }
 
-int suma_goldbach_numero(arreglo_de_datos_t* array_sums, int64_t number) {
+int suma_goldbach_numero(array_t* array_sums, int64_t number) {
     if (number % 2 == 0) {
         return suma_par(array_sums, number);
     } else {

@@ -28,7 +28,7 @@ void entrada_init(entrada_t* entrada);
  * @param entrada 
  * @param array 
  */
-void entrada_get_file(entrada_t* entrada, arreglo_de_datos_t* array);
+void entrada_get_file(entrada_t* entrada, array_t* array);
 
 /**
  * @brief validacion de que el char existe y sirve para el programa
@@ -41,7 +41,7 @@ void entrada_validate(int64_t* is_valid);
  * 
  * @param array 
  */
-void entrada_print(arreglo_de_datos_t* array);
+void entrada_print(array_t* array);
 /**
  * @brief encargado de obtener las sumas e imprimirlas
  * 
