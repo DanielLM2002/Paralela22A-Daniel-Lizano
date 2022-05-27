@@ -5,8 +5,8 @@
  */
 #include "entrada.h"
 int main(void) {
-    entrada_t entry;
-    entrada_init(&entry);
-    run(&entry);
-    return entry.error;
+    interfaz_t entrada;
+    entrada_init(&entrada);
+    entrada_ejecutar(&entrada);
+    return entrada.error;
 }

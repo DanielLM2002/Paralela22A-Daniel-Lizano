@@ -7,12 +7,12 @@
 #include "arreglo_de_datos.h"
 #include <stdio.h>
 
-typedef struct nodo_arreglo {
+typedef struct arreglo_nodo {
   // puntero al siguiente nodo
-  nodo_arreglo_t* siguiente;
+  arreglo_nodo_t* siguiente;
 
   // Cola que tiene cada nodo individualmente
-  arreglo_t arreglo_goldbach;
+  arreglo_t cola_goldbach;
 
   // posicion del valoro en la cola
   int64_t posicion;
@@ -23,21 +23,33 @@ typedef struct nodo_arreglo {
   // Indica si el valor es invalido o no 
   int validez;
 
-} nodo_arreglo_t;
-
-void cola_init(arreglo_t* arreglo) {
-  assert(arreglo);
-  arreglo->primero = NULL;
-  arreglo->ultimo = NULL;
+} arreglo_nodo_t;
+/**
+ * @brief Metodo encargado de iniciar arreglo(cola) que usaremos
+ * para guardar los numeros en la ejecucion
+ * 
+ * @param cola 
+ */
+void arreglo_init(arreglo_t* cola) {
+  assert(cola);
+  cola->primero = NULL;
+  cola->ultimo = NULL;
 }
-
-int cola_insertar(arreglo_t* arreglo, int64_t valor, int valido) {
-  assert(arreglo);
+/**
+ * @brief metodo usado para introducir numeros al arreglo
+ * 
+ * @param cola 
+ * @param valor 
+ * @param valido 
+ * @return int 
+ */
+int arreglo_insertar(arreglo_t* cola, int64_t valor, int valido) {
+  assert(cola);
   int error = EXIT_SUCCESS;
 
   
-  nodo_arreglo_t* nuevo_nodo = (nodo_arreglo_t*) calloc(1, 
-    sizeof(nodo_arreglo_t));  // NOLINT
+  arreglo_nodo_t* nuevo_nodo = (arreglo_nodo_t *) 
+    calloc(1, sizeof(arreglo_nodo_t));
 
   
   if (nuevo_nodo) {
@@ -45,77 +57,122 @@ int cola_insertar(arreglo_t* arreglo, int64_t valor, int valido) {
     nuevo_nodo->valor = valor;
     nuevo_nodo->posicion = 1;
     nuevo_nodo->validez = valido;
-    cola_init(&nuevo_nodo->arreglo_goldbach);
+    arreglo_init(&nuevo_nodo->cola_goldbach);
 
-    if (arreglo->ultimo == NULL) {
-      arreglo->primero = nuevo_nodo;
-      arreglo->ultimo = nuevo_nodo;
+    if (cola->ultimo == NULL) {
+      cola->primero = nuevo_nodo;
+      cola->ultimo = nuevo_nodo;
     } else {
-      arreglo->ultimo->siguiente = nuevo_nodo;
-      arreglo->ultimo = arreglo->ultimo->siguiente;
+      cola->ultimo->siguiente = nuevo_nodo;
+      cola->ultimo = cola->ultimo->siguiente;
     }
   } else {
     error = EXIT_FAILURE;
-    fprintf(stderr, "ERROR: no se cuenta con memoria suficiente");
+    fprintf(stderr, "ERROR: Not enough memory to append a new valor.");
   }
   return error;
 }
-
-int cola_posible_insertar(arreglo_t* arreglo, int64_t valor, int valido) {
-  assert(arreglo);
+/**
+ * @brief valida si es posible insertar en arreglo
+ * 
+ * @param cola 
+ * @param valor 
+ * @param valido 
+ * @return int 
+ */
+int arreglo_posible_insertar(arreglo_t * cola, int64_t valor, int valido) {
+  assert(cola);
   int error = EXIT_SUCCESS;
-  error = cola_insertar(arreglo, valor, valido);
+  error = arreglo_insertar(cola, valor, valido);
   return error;
 }
-
-nodo_arreglo_t* cola_buscar(arreglo_t* arreglo, int64_t buscar_valor) {
-  assert(arreglo);
-  nodo_arreglo_t* actual = arreglo->primero;
+/**
+ * @brief metodo encargado de buscar items en el arreglo dinamico
+ * 
+ * @param cola 
+ * @param buscar_valor 
+ * @return arreglo_nodo_t* 
+ */
+arreglo_nodo_t* arreglo_buscar(arreglo_t* cola, int64_t buscar_valor) {
+  assert(cola);
+  arreglo_nodo_t* actual = cola->primero;
   while (actual && actual->valor != buscar_valor) {
     actual = actual->siguiente;
   }
   return actual;
 }
-
-void cola_destruir(arreglo_t* arreglo) {
-  assert(arreglo);
-  nodo_arreglo_t* actual = arreglo->primero;
-  nodo_arreglo_t* temp = NULL;
+/**
+ * @brief metodo para destruir la estructura de arreglo
+ * 
+ * @param cola 
+ */
+void arreglo_destruir(arreglo_t* cola) {
+  assert(cola);
+  arreglo_nodo_t* actual = cola->primero;
+  arreglo_nodo_t* temp = NULL;
 
   while (actual) {
     temp = actual->siguiente;
-    cola_nodo_destruir(actual);
+    arreglo_nodo_destruir(actual);
     actual = temp;
   }
-  arreglo->primero = NULL;
-  arreglo->ultimo = NULL;
+  cola->primero = NULL;
+  cola->ultimo = NULL;
 }
-
-void cola_nodo_destruir(nodo_arreglo_t* nodo) {
+/**
+ * @brief metodo para destruir los nodos
+ * 
+ * @param nodo 
+ */
+void arreglo_nodo_destruir(arreglo_nodo_t* nodo) {
   nodo->valor = 0;
 
-  cola_destruir(&nodo->arreglo_goldbach);
+  arreglo_destruir(&nodo->cola_goldbach);
   free(nodo);
 }
-
-int64_t cola_nodo_conseguir_valor(nodo_arreglo_t* nodo) {
+/**
+ * @brief metodo getter para obtener valor de un nodo 
+ * 
+ * @param nodo 
+ * @return int64_t 
+ */
+int64_t arreglo_nodo_conseguir_valor(arreglo_nodo_t* nodo) {
   return nodo->valor;
 }
-
-int64_t cola_nodo_conseguir_posicion(nodo_arreglo_t* nodo) {
+/**
+ * @brief conseguir la posicion del nodo
+ * 
+ * @param nodo 
+ * @return int64_t 
+ */
+int64_t arreglo_nodo_conseguir_posicion(arreglo_nodo_t* nodo) {
   return nodo->posicion;
 }
-
-nodo_arreglo_t* cola_nodo_conseguir_siguiente(nodo_arreglo_t* nodo) {
+/**
+ * @brief conseguir siguiente item en la cola
+ * 
+ * @param nodo 
+ * @return arreglo_nodo_t* 
+ */
+arreglo_nodo_t* arreglo_nodo_conseguir_siguiente(arreglo_nodo_t* nodo) {
   return nodo->siguiente;
 }
-
-arreglo_t* cola_nodo_conseguir_cola_goldbach(nodo_arreglo_t* nodo) {
-  return &nodo->arreglo_goldbach;
+/**
+ * @brief conseguir toda la estructura de datos para el programa
+ * 
+ * @param nodo 
+ * @return arreglo_t* 
+ */
+arreglo_t* arreglo_nodo_conseguir_cola_goldbach(arreglo_nodo_t* nodo) {
+  return &nodo->cola_goldbach;
 }
-
-int cola_nodo_conseguir_validez(nodo_arreglo_t* nodo) {
+/**
+ * @brief coseguir nivel de validez del elemento
+ * 
+ * @param nodo 
+ * @return int 
+ */
+int arreglo_nodo_conseguir_validez(arreglo_nodo_t* nodo) {
   return nodo->validez;
 }
-
 

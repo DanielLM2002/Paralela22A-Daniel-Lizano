@@ -6,132 +6,180 @@
  */
 #include "entrada.h"
 #include "sumas.h"
-#include <stdlib.h>
-
-void entrada_init(entrada_t* entrada) {
-    entrada->error = EXIT_SUCCESS;
+/**
+ * @brief inicializacion de la estructura entrada
+ * 
+ * @param interfaz 
+ */
+void entrada_init(interfaz_t* interfaz) {
+  interfaz->error = EXIT_SUCCESS;
 }
+/**
+ * @brief Main driver de todo el programa
+ * 
+ * @param interfaz 
+ * @return int 
+ */
+int entrada_ejecutar(interfaz_t* interfaz) {
+  arreglo_t cola;  // cola para guardar numeros del archivo 
+  arreglo_init(&cola);
 
-int64_t run(entrada_t* entrada) {
-    array_t array;
-    arreglo_init(&array);
+   
+  entrada_get_file(interfaz, &cola);
 
-    entrada_get_file(entrada, &array);
-    suma_goldbach_total(&array);
-    if (entrada -> error == 0)
-        entrada_print(&array);
-    else
-        fprintf(stderr, "There was an error in the program");
-    arreglo_destroy(&array);
-    return entrada-> error;
+  // una vez guardada procedemos a hacer las sumas de goldbach
+  goldbach_suma_total(&cola);
+
+  if (interfaz ->error == 0) {
+    // se imprime el resultado si no hay errores 
+    entrada_imprimir(&cola);
+  } else {
+    fprintf(stderr, "Hubo un error con el programa");
+  }
+
+  // se libera la memoria 
+  arreglo_destruir(&cola);
+  return interfaz->error;
 }
-
-void entrada_get_file(entrada_t* entrada, array_t* array) {
-    int64_t current_value = 0;
-    int64_t valid = 0;
-    while (feof(stdin) == 0) {
-        if (fscanf(stdin, "%ld", &current_value) == 1) {
-            entrada_validate(&valid);
-            entrada -> error = array_insertion(array, current_value, valid);
-            valid = 0;
-        } else {
-            current_value = 0;
-            entrada -> error = insert(array, current_value, 1);
-        }
+/**
+ * @brief getter para obtener archivo desde la entrada estandar
+ * 
+ * @param interfaz 
+ * @param cola 
+ */
+void entrada_get_file(interfaz_t * interfaz, arreglo_t * cola) {
+  int64_t valor_actual = 0;
+  int invalido = 0;
+  while (feof(stdin) == 0) {
+    if (fscanf(stdin, "%ld", &valor_actual) == 1) {
+      entrada_validate(&invalido);
+      interfaz->error = arreglo_posible_insertar(cola, valor_actual, invalido);
+      invalido = 0;
+    } else {
+      ignorar_linea();
+      valor_actual = 0;
+      interfaz->error = arreglo_insertar(cola, valor_actual, 1);
     }
+  }
 }
-
-
-void entrada_validate(int64_t* is_valid) {
-    if (errno == ERANGE) {
-        *is_valid = 1;
-        clearerr(stdin);
-        errno = 0;
-    }
+/**
+ * @brief metodo para ignorar lineas vacias
+ * 
+ */
+void ignorar_linea() {
+  char ignorar = '\0';
+  while (ignorar != EOF && ignorar != '\n') {
+    ignorar = fgetc(stdin);
+  }
 }
-
-void entrada_print_sumas(arreglo_nodo_cola_t* current, int64_t value) {
-    int64_t position = 0;
-    int64_t number = 0;
-    arreglo_nodo_cola_t* current_sum = get_arreglo_sumas_goldbach(current)->primero;
-    bool impar = true;
-    if (value % 2 == 0) {
-        impar = false;
-    }
-    int64_t counter = 0;
-    while (current_sum) {
-        position = get_posicion_nodo_cola(current_sum);
-        number = get_value_nodo_cola(current_sum);
-        if (position > 0) {
-            fprintf(stdout, "%ld + ", number);
-            number = 0;
-            ++counter;
-            if (counter == 3 && impar == true) {
-                fprintf(stdout, ", ");
-                counter = 0;
-            }
-            if (impar == false && counter == 2) {
-                fprintf(stdout, ", ");
-                counter = 0;
-            }
-        } else {
-            fprintf(stdout, "%ld", number);
-        }
-        current_sum = get_siguiente(current_sum);
-    }
+/**
+ * @brief revisar si el archivo de entrada y sus items son validos
+ * 
+ * @param invalido 
+ */
+void entrada_validate(int * invalido) {
+  if (errno == ERANGE) {
+    *invalido = 1;
+    clearerr(stdin);
+    errno = 0;
+  }
 }
-
-void entrada_print(array_t* array) {
-    arreglo_nodo_cola_t* actual = array->primero;
-    int64_t value = 0;
-    int64_t aux_value = 0;
-
-    while (actual) {
-        value = get_value_nodo_cola(actual);
-        if (nodo_validate(actual)) {
-            fprintf(stdout, "%ld: NA\n", value);
-        }
-        if (value <= 5 && value >= 0) {
-            fprintf(stdout, "%ld: NA\n", value);
-        }
-        if (value > 5 || value < -5) {
-            fprintf(stdout, "%ld: ", value);
-            get_sumas_entrada(actual, aux_value);
-            if (value < -5) {
-                aux_value = value + (value * -2);
-                entrada_print_sumas(actual, aux_value);
-            }
-            fprintf(stdout, "\n");
-        }
-        actual = get_siguiente(actual);
+/**
+ * @brief metodo para realizar la impresion del resultado
+ * 
+ * @param actual 
+ * @param valor 
+ */
+void entrada_imprimir_goldbach(arreglo_nodo_t * actual, int64_t valor) {
+  int64_t posicion = 0;
+  int64_t numero = 0;
+  arreglo_nodo_t* actual_goldbach = arreglo_nodo_conseguir_cola_goldbach(actual)->primero;
+  bool es_impar = true;
+  if (valor % 2 == 0) {
+    es_impar = false;
+  }
+  int64_t contador = 0;
+  while(actual_goldbach) {
+    posicion = arreglo_nodo_conseguir_posicion(actual_goldbach);
+    numero = arreglo_nodo_conseguir_valor(actual_goldbach);
+    if (posicion > 0) {
+      fprintf (stdout, "%ld + ", numero);
+      numero = 0;
+      contador++;
+      if (es_impar == true && contador == 3) {
+        fprintf(stdout, ", ");
+        contador = 0;
+      } else if (es_impar == false && contador == 2){
+        fprintf(stdout, ", ");
+        contador = 0;
+      }
+    } else {
+      fprintf(stdout, "%ld", numero);
     }
+    actual_goldbach = arreglo_nodo_conseguir_siguiente(actual_goldbach);
+  }
 }
+/**
+ * @brief realizar impresion de las sumas
+ * 
+ * @param cola 
+ */
+void entrada_imprimir(arreglo_t * cola) {
+  arreglo_nodo_t* actual = cola->primero;
+  int64_t valor = 0;
+  int64_t valor_positivo = 0;
 
-void get_sumas_entrada(arreglo_nodo_cola_t* actual, int64_t value) {
-    bool impar = true;
-    if (value % 2 == 0) {
-        impar = true;
+  while (actual) {
+    valor = arreglo_nodo_conseguir_valor(actual);
+    if (arreglo_nodo_conseguir_validez(actual)) {
+      fprintf(stdout, "%ld: NA\n", valor);
     }
-    int counter = 0;
-    int aux = 0;
-    arreglo_nodo_cola_t* current_sum = get_arreglo_sumas_goldbach(actual)->primero;
-    while (current_sum) {
-        if (impar) {
-            ++counter;
-        }
-        if (counter == 3) {
-            counter = 0;
-            ++aux;
-        } else {
-            if (counter == 2) {
-                counter = 0;
-                ++aux;
-            }
-        }
-        current_sum = get_siguiente(current_sum);
+    if (valor >= 0 && valor <= 5) {
+        fprintf(stdout,"%ld: NA\n", valor);
     }
-    fprintf(stdout, "%i sums: ", aux);
+    if (valor > 5 || valor < -5) {
+       fprintf(stdout,"%ld: ", valor);
+      entrada_conseguir_sumas(actual, valor);
+      if (valor < -5) {
+        valor_positivo = valor + (valor * -2);
+        entrada_imprimir_goldbach(actual, valor_positivo);
+      }
+      fprintf(stdout, "\n");
+    }
+    actual = arreglo_nodo_conseguir_siguiente(actual);
+  }
 }
-
+/**
+ * @brief metodo linker para obtener sumas 
+ * 
+ * @param actual 
+ * @param valor 
+ */
+void entrada_conseguir_sumas(arreglo_nodo_t* actual, int64_t valor) {
+  bool es_impar = true;
+  if (valor % 2 == 0) {
+    es_impar = false;
+  }
+  int contador = 0;
+  int contador_total = 0;
+  arreglo_nodo_t* actual_goldbach = 
+    arreglo_nodo_conseguir_cola_goldbach(actual)->primero;
+  while (actual_goldbach) {
+    if (es_impar) {
+      contador++;
+      if (contador == 3) {
+        contador = 0;
+        contador_total++;
+      }
+    } else {
+      if (contador == 2) {
+        contador = 0;
+        contador_total++;
+      }
+    }
+    actual_goldbach = arreglo_nodo_conseguir_siguiente(actual_goldbach);
+  }
+  fprintf(stdout, "%i sums: ", contador_total);
+}
 
 
