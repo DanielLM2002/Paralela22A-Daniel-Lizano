@@ -4,90 +4,100 @@
  * la clase entrada
  * 
  */
-#include <math.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include "sumas.h"
+#include <math.h>
 
-int suma_goldbach_total(array_t* array) {
-    int64_t value = 0;
-    arreglo_nodo_cola_t* current_position = array -> primero;
-    array_t* array_goldbach_actual = NULL;
-    int error = EXIT_SUCCESS;
+int goldbach_suma_total(arreglo_t* arreglo) {
+  int64_t valor = 0;
+  nodo_arreglo_t* nodo_actual = arreglo ->primero;
+  arreglo_t* cola_goldbach_actual = NULL;  
 
-    while (current_position && error ==0) {
-        array_goldbach_actual = get_arreglo_sumas_goldbach(current_position);
-        value = get_value_nodo_cola(current_position);
-        if (value < 0) {
-            value = value + (value * -2);
-        }
-        if (value > 5 &&
-                get_arreglo_sumas_goldbach(current_position) == 0) {
-            error = suma_goldbach_numero(array_goldbach_actual, value);
-        }
-        current_position = get_siguiente(current_position);
-    }
-    if (error) {
-        fprintf(stderr, "The system lacks memory");
-    }
-    return error;
+  int error = EXIT_SUCCESS;
+  
+  while (nodo_actual && error == 0) {
+      cola_goldbach_actual = cola_nodo_conseguir_cola_goldbach(nodo_actual);
+      valor = cola_nodo_conseguir_valor(nodo_actual);
+      
+      if (valor < 0) {
+        valor = valor + (valor * -2);
+      } 
+
+      if (cola_nodo_conseguir_validez(nodo_actual) == 0 && valor > 5) {
+        error = goldbach_suma_numero(valor, cola_goldbach_actual);
+      }
+      nodo_actual = cola_nodo_conseguir_siguiente(nodo_actual);
+   }
+
+   if (error) {
+    fprintf(stderr, "No hay suficiente memoria en el sistema");
+   }
+   return error;
 }
 
-bool suma_prima(int64_t number) {
-    bool result = true;
-    if (number >= 2) {
-        result = true;
-        int64_t max = number - 1;
-        for (int i = 2; i <= max; ++i) {
-            if (number % i == 0) {
-                result = false;
+bool goldbach_es_primo (int64_t numero) {
+  bool resultado = false;
+  if (numero >= 2) {
+    resultado = true;
+    int64_t limite = numero-1;
+    for (int i = 2; i <= limite; i++) {
+      if (numero % i == 0) {
+          resultado = false;
+      } 
+    }
+  }
+  return resultado;
+}
+
+int goldbach_par(int64_t numero, arreglo_t* arreglo_goldbach) {
+  int error = EXIT_SUCCESS;
+
+  for (int64_t i = 2; i < numero; i++) {
+    if (goldbach_es_primo(i) == true) {
+      for (int64_t j = 0; j < numero; j++) {
+        if (i + j == numero && goldbach_es_primo(j) == true) {
+          error = cola_posible_insertar(arreglo_goldbach, i , 0);
+          error = cola_posible_insertar(arreglo_goldbach, j, 0);
+        }
+      }
+    }
+  }
+
+  return error;
+
+}
+
+
+int goldbach_impar(int64_t numero, arreglo_t* arreglo_goldbach) {
+  int error = EXIT_SUCCESS;
+
+  for (int64_t i = 2; i < numero; i++) {
+    if (goldbach_es_primo(i) == true) {
+      for (int64_t j = 2; j < numero; j++) {
+        if (goldbach_es_primo(j) == true) {
+          for (int64_t k = 2; k < numero; k++) {
+            if (i + j + k == numero && goldbach_es_primo(k)) {
+                if (i <= j && i <= k && j <= k) {
+                 error = cola_posible_insertar(arreglo_goldbach, i , 0);
+                 error = cola_posible_insertar(arreglo_goldbach, j, 0);
+                 error = cola_posible_insertar(arreglo_goldbach, k , 0);
+                } 
             }
+          }
         }
+      }
     }
-    return result;
+  }
+
+  return error;
+
 }
 
-int suma_par(array_t* array_sums, int64_t number) {
-    int error = EXIT_SUCCESS;
-    for (int64_t i = 2; i < number; ++i) {
-        if (suma_prima(i) == true) {
-            for (int64_t j=0; j < number; ++j) {
-                if (i + j == number && suma_prima(j) == true) {
-                    error = array_insertion(array_sums, i, 0);
-                    error = array_insertion(array_sums, j, 0);
-                }
-            }
-        }
-    }
-    return error;
-}
+int goldbach_suma_numero(int64_t numero, arreglo_t* arreglo_goldbach) {
+  
+  if (numero % 2 == 0) {
+    return goldbach_par(numero, arreglo_goldbach);
+  } else {
+    return goldbach_impar(numero, arreglo_goldbach);
+  }
 
-int suma_impar(array_t* array_sums, int64_t number) {
-    int error = EXIT_FAILURE;
-    for (int64_t iterator = 2; iterator < number; ++iterator) {
-        if (suma_prima(iterator) == true) {
-            for (int64_t j = 2; j< number; ++j) {
-                if (suma_prima(j) == true) {
-                    for (int64_t k = 2; k < number; ++k) {
-                        if (iterator + j + k == number && suma_prima(k)) {
-                            if (iterator <= k && iterator <= j && j <= k) {
-                            error = array_insertion(array_sums, iterator, 0);
-                            error = array_insertion(array_sums, j, 0);
-                            error = array_insertion(array_sums, k, 0);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    return error;
-}
-
-int suma_goldbach_numero(array_t* array_sums, int64_t number) {
-    if (number % 2 == 0) {
-        return suma_par(array_sums, number);
-    } else {
-        return suma_impar(array_sums, number);
-    }
 }

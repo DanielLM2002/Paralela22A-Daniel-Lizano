@@ -6,51 +6,21 @@
  */
 #ifndef SUMAS_H
 #define SUMAS_H
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdint.h>
-#include <assert.h>
 #include <stdbool.h>
-#include <inttypes.h>
+#include <math.h>
 #include "arreglo_de_datos.h"
-/**
- * @brief metodo para generar el arreglo a usar
- * 
- * @param array 
- * @return int 
- */
-int suma_goldbach_total(array_t* array);
-/**
- * @brief metodo para revisar si la suma es par
- * 
- * @param array_sums 
- * @param number 
- * @return int 
- */
-int suma_par(array_t* array_sums, int64_t number);
-/**
- * @brief meter los numeros en el arreglo
- * 
- * @param array_sums 
- * @param number 
- * @return int 
- */
-int suma_goldbach_numero(array_t* array_sums, int64_t number);
-/**
- * @brief revisar si la suma es de numeros primos
- * 
- * @param number 
- * @return true 
- * @return false 
- */
-bool suma_prima(int64_t number);
-/**
- * @brief revisar si la suma es de numeros impar
- * 
- * @param array_sums 
- * @param number 
- * @return int 
- */
-int suma_impar(array_t* array_sums, int64_t number);
+
+int goldbach_suma_total(arreglo_t* arreglo);
+
+int goldbach_suma_numero(int64_t numero, arreglo_t* arreglo_goldbach);
+
+bool goldbach_es_primo(int64_t numero);
+
+int goldbach_par(int64_t numero, arreglo_t* arreglo_goldbach);
+
+int goldbach_impar(int64_t numero, arreglo_t* arreglo_goldbach);
 
 #endif

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu May 26 20:46:48 2022
+# Make data base, printed on Thu May 26 22:20:19 2022
 
 # Variables
 
@@ -14,6 +14,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
@@ -25,7 +27,7 @@ SNAP_INSTANCE_KEY =
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b2a1c035-36cd-4d02-8081-8f58fd802405.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a551f72b-576b-4c42-9391-46f6eb963a86.sock
 # makefile (from 'makefile', line 23)
 SRC_DIR = src
 # environment
@@ -118,8 +120,8 @@ XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 XDG_SESSION_DESKTOP = ubuntu
-# makefile (from 'build/sumas.d', line 1)
-MAKEFILE_LIST := makefile build/arreglo_de_datos.d build/entrada.d build/main.d build/sumas.d
+# makefile (from 'makefile', line 1)
+MAKEFILE_LIST := makefile
 # environment
 SNAP_REEXEC = 
 # automatic
@@ -144,6 +146,7 @@ SOURCEC = $(wildcard $(DIRS:%=%/*.c))
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile (from 'makefile', line 10)
 FLAGS = $(strip -Wall -Wextra -pthread $(DEFS))
+ 
 # environment
 SESSION_MANAGER = local/daniel-virtual-machine:@/tmp/.ICE-unix/1282,unix/daniel-virtual-machine:/tmp/.ICE-unix/1282
 # automatic
@@ -277,8 +280,7 @@ MANAGERPID = 1124
 # environment
 LC_MEASUREMENT = es_CR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 8608
- 
+GIO_LAUNCHED_DESKTOP_FILE_PID = 13124
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
@@ -356,7 +358,7 @@ LC_IDENTIFICATION = es_CR.UTF-8
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=172/1024=17%, Rehash=0, Collisions=28/417=7%
+# Load=173/1024=17%, Rehash=0, Collisions=28/410=7%
 
 # Pattern-specific Variable Values
 
@@ -368,10 +370,10 @@ build/output%.txt :
 # Directories
 
 # src (device 2051, inode 920710): 9 files, no impossibilities.
-# . (device 2051, inode 920700): 13 files, no impossibilities.
+# . (device 2051, inode 920700): 10 files, no impossibilities.
 # tests: could not be stat'd.
 
-# 22 files, no impossibilities in 3 directories.
+# 19 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -405,7 +407,8 @@ helgrind: bin/goldbach_serial
 # Not a target:
 src/arreglo_de_datos.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 23:38:32.917844084
+ 
+#  Last modified 2022-05-26 22:08:34.81744442
 #  File has been updated.
 #  Successfully updated.
 
@@ -438,9 +441,9 @@ bin/goldbach_serial: build/arreglo_de_datos.o build/entrada.o build/main.o build
 # Not a target:
 build/entrada.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 20:44:50.585090486
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 lint:
 #  Phony target (prerequisite of .PHONY).
@@ -476,9 +479,9 @@ default: debug
 # Not a target:
 build/arreglo_de_datos.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 20:44:50.553090555
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 # Not a target:
 *.mk:
@@ -531,7 +534,7 @@ clean:
 # Not a target:
 src/arreglo_de_datos.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 23:38:32.917844084
+#  Last modified 2022-05-26 21:52:05.993550924
 #  File has been updated.
 #  Successfully updated.
 
@@ -544,7 +547,8 @@ ubsan: debug
 # variable set hash-table stats:
 # Load=1/32=3%, Rehash=0, Collisions=0/3=0%
 
-build/sumas.o: src/sumas.c src/sumas.h src/arreglo_de_datos.h
+# Not a target:
+build/sumas.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -558,7 +562,6 @@ src/main.c:
 
 # Not a target:
 %/.:
- 
 #  Precious file (prerequisite of .PRECIOUS).
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -567,14 +570,14 @@ src/main.c:
 # Not a target:
 build/sumas.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 20:44:50.649090347
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 # Not a target:
 src/sumas.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 23:38:32.917844084
+#  Last modified 2022-05-26 21:39:18.09030291
 #  File has been updated.
 #  Successfully updated.
 
@@ -664,11 +667,12 @@ gitignore:
 # Not a target:
 src/sumas.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 23:38:32.917844084
+#  Last modified 2022-05-26 21:32:16.466220095
 #  File has been updated.
 #  Successfully updated.
 
-build/entrada.o: src/entrada.c src/entrada.h src/arreglo_de_datos.h src/sumas.h
+# Not a target:
+build/entrada.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -682,11 +686,12 @@ memcheck: bin/goldbach_serial
 	valgrind --tool=memcheck $(EXEARGS)
 
 # Not a target:
+ 
 build/main.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-26 20:44:50.613090425
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 test: bin/goldbach_serial
 #  Phony target (prerequisite of .PHONY).
@@ -704,18 +709,19 @@ makefile:
 # Not a target:
 src/entrada.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 23:38:32.917844084
+#  Last modified 2022-05-26 21:32:16.466220095
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 src/entrada.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-25 23:55:53.265999984
+#  Last modified 2022-05-26 21:39:38.66647951
 #  File has been updated.
 #  Successfully updated.
 
-build/arreglo_de_datos.o: src/arreglo_de_datos.c src/arreglo_de_datos.h
+# Not a target:
+build/arreglo_de_datos.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -749,7 +755,8 @@ release: bin/goldbach_serial
 #  Modification time never checked.
 #  File has not been updated.
 
-build/main.o: src/main.c src/entrada.h src/arreglo_de_datos.h
+# Not a target:
+build/main.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -760,19 +767,19 @@ build/main.o: src/main.c src/entrada.h src/arreglo_de_datos.h
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=43/1024=4%, Rehash=0, Collisions=6/136=4%
+# Load=43/1024=4%, Rehash=0, Collisions=6/124=5%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 68 / storage = 708 B / avg = 10 B
-# current buf: size = 8162 B / used = 708 B / count = 68 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 65 / storage = 691 B / avg = 10 B
+# current buf: size = 8162 B / used = 691 B / count = 65 / avg = 10 B
 
-# strcache performance: lookups = 168 / hit rate = 59%
+# strcache performance: lookups = 145 / hit rate = 55%
 # hash-table stats:
-# Load=68/8192=1%, Rehash=0, Collisions=0/168=0%
-# Finished Make data base on Thu May 26 20:46:48 2022
+# Load=65/8192=1%, Rehash=0, Collisions=0/145=0%
+# Finished Make data base on Thu May 26 22:20:19 2022
 
  
