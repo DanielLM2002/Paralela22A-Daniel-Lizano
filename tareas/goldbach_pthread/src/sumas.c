@@ -117,3 +117,11 @@ int goldbach_suma_numero(int64_t numero, arreglo_t* cola_goldbach) {
     return goldbach_impar(numero, cola_goldbach);
   }
 }
+
+void* goldbach_cola_secundaria(void* cola) {
+  private_data_t* private_data = (private_data_t*)cola;
+  arreglo_nodo_t* actual = private_data->primero;
+  while (actual) {
+    
+  }
+}
