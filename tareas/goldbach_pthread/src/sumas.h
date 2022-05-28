@@ -13,7 +13,7 @@
 #include <math.h>
 #include "arreglo_de_datos.h"
 
-int goldbach_suma_total(arreglo_t * cola);
+int goldbach_suma_total(arreglo_t* cola, uint64_t hilos);
 
 int goldbach_suma_numero(int64_t numero, arreglo_t* cola_goldbach);
 
