@@ -12,6 +12,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include "arreglo_de_datos.h"
+#include "hilos.h"
 
 int goldbach_suma_total(arreglo_t* cola, uint64_t hilos);
 

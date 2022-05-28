@@ -13,31 +13,16 @@
  * @param cola 
  * @return int 
  */
-int goldbach_suma_total(arreglo_t* cola) {
-  int64_t valor = 0;
-  arreglo_nodo_t* nodo_actual = cola ->primero;
-  arreglo_t* cola_goldbach_actual = NULL;  
-
+int goldbach_suma_total(arreglo_t* cola, uint64_t hilos) {
   int error = EXIT_SUCCESS;
-  
-  while (nodo_actual && error == 0) {
-      cola_goldbach_actual = arreglo_nodo_conseguir_cola_goldbach(nodo_actual);
-      valor = arreglo_nodo_conseguir_valor(nodo_actual);
-      
-      if (valor < 0) {
-        valor = valor + (valor * -2);
-      } 
-
-      if (arreglo_nodo_conseguir_validez(nodo_actual) == 0 && valor > 5) {
-        error = goldbach_suma_numero(valor, cola_goldbach_actual);
-      }
-      nodo_actual = arreglo_nodo_conseguir_siguiente(nodo_actual);
-   }
-
-   if (error) {
-    fprintf(stderr, "No hay suficiente memoria en el sistema");
-   }
-   return error;
+  if (cola->tamano - 1 > 0) {
+    shared_data_t* shared_data = pthread_init_shared_data(cola, hilos);
+    error = pthread_crear_hilos(shared_data);
+    shared_data->hilos = 0;
+    shared_data->cola = NULL;
+    free(shared_data);
+  }
+  return error;
 }
 /**
  * @brief revisar si el numero a usar es primo 
