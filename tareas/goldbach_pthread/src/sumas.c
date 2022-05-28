@@ -57,7 +57,7 @@ int goldbach_par(int64_t numero, arreglo_t* cola_goldbach) {
     numero = numero + (numero * -2);
   }
   int64_t numero_aux = 0;
-  for (int64_t i = 2; i < numero; i++) {//si no funca cambiar por int64
+  for (int64_t i = 2; i < numero; i++) {
     if (goldbach_es_primo(i) == true) {
       numero_aux = numero - i;
       if (i + numero_aux == numero &&
@@ -122,6 +122,14 @@ void* goldbach_cola_secundaria(void* cola) {
   private_data_t* private_data = (private_data_t*)cola;
   arreglo_nodo_t* actual = private_data->primero;
   while (actual) {
-    
+    if (arreglo_nodo_conseguir_validez(actual) == 0) {
+      goldbach_suma_numero(arreglo_nodo_conseguir_valor(actual),
+                            arreglo_nodo_conseguir_cola_goldbach(actual));
+    }
+    if (actual == private_data->ultimo) {
+      actual = NULL;
+    } else {
+      actual = arreglo_nodo_conseguir_siguiente(actual);
+    }
   }
 }

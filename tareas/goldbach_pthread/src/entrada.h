@@ -20,11 +20,11 @@ typedef struct interfaz {
 } interfaz_t;
 
 
-void entrada_init(interfaz_t * interfaz);
+//void entrada_init(interfaz_t * interfaz);
 
-int entrada_ejecutar();
+int entrada_ejecutar(int argc, char* argv[]);
 
-void entrada_get_file(interfaz_t * interfaz, arreglo_t * cola);
+void entrada_get_file(arreglo_t * cola);
 
 void ignorar_linea();
 
