@@ -34,6 +34,7 @@ void arreglo_init(arreglo_t* cola) {
   assert(cola);
   cola->primero = NULL;
   cola->ultimo = NULL;
+  cola->tamano = 0;
 }
 /**
  * @brief metodo usado para introducir numeros al arreglo
@@ -55,7 +56,6 @@ int arreglo_insertar(arreglo_t* cola, int64_t valor, int valido) {
   if (nuevo_nodo) {
     
     nuevo_nodo->valor = valor;
-    nuevo_nodo->posicion = 1;
     nuevo_nodo->validez = valido;
     arreglo_init(&nuevo_nodo->cola_goldbach);
 
@@ -66,9 +66,10 @@ int arreglo_insertar(arreglo_t* cola, int64_t valor, int valido) {
       cola->ultimo->siguiente = nuevo_nodo;
       cola->ultimo = cola->ultimo->siguiente;
     }
+    ++cola->tamano;
   } else {
     error = EXIT_FAILURE;
-    fprintf(stderr, "ERROR: Not enough memory to append a new valor.");
+    fprintf(stderr, "ERROR: No hay suficiente memoria para agregar el item.");
   }
   return error;
 }
@@ -126,7 +127,6 @@ void arreglo_destruir(arreglo_t* cola) {
  */
 void arreglo_nodo_destruir(arreglo_nodo_t* nodo) {
   nodo->valor = 0;
-
   arreglo_destruir(&nodo->cola_goldbach);
   free(nodo);
 }

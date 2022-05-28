@@ -15,6 +15,7 @@ typedef struct arreglo_nodo arreglo_nodo_t;
 typedef struct arreglo {
   arreglo_nodo_t * primero; 
   arreglo_nodo_t * ultimo;
+  int64_t tamano;
 }arreglo_t;
 
 void arreglo_init(arreglo_t * cola);
