@@ -23,4 +23,5 @@ int goldbach_par(int64_t numero, arreglo_t* cola_goldbach);
 
 int goldbach_impar(int64_t numero, arreglo_t* cola_goldbach);
 
+void* goldbach_cola_secundaria(void* cola);
 #endif
