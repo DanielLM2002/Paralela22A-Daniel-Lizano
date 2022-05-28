@@ -4,7 +4,7 @@
 ### primer ciclo 2022
 #### --------
 
-Este repositorio contiene el proyecto de las sumas de Goldbach seriales.
+Este repositorio contiene el proyecto de las sumas de Goldbach concurrentes, esta version del programa permite aplicar.
 El problema consiste en que para todo número entero mayor que 5 suceden una de las siguientes dos cosas: 
 ```
 Si el número es par, este se puede escribir como la suma de dos números primos.
