@@ -4,9 +4,7 @@
  * 
  */
 #include "entrada.h"
-int main(void) {
-    interfaz_t entrada;
-    entrada_init(&entrada);
-    entrada_ejecutar(&entrada);
-    return entrada.error;
+int main(int argc, char* args[]) {
+    int error = entrada_ejecutar(argc, args);
+    return error;
 }

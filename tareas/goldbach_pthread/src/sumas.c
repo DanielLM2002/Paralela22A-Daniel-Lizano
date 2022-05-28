@@ -91,9 +91,9 @@ int goldbach_impar(int64_t numero, arreglo_t* cola_goldbach) {
           if (i + j + numero_temp == numero && 
            goldbach_es_primo(numero_temp)) {
             if (i <= j && i <= numero_temp && j <= numero_temp) {
-              error = cola_posible_insertar(cola_goldbach, i, 0);
-              error = cola_posible_insertar(cola_goldbach, j, 0);
-              error = cola_posible_insertar(cola_goldbach, numero_temp, 0);
+              error = arreglo_posible_insertar(cola_goldbach, i, 0);
+              error = arreglo_posible_insertar(cola_goldbach, j, 0);
+              error = arreglo_posible_insertar(cola_goldbach, numero_temp, 0);
             }
           }
         }
@@ -132,4 +132,5 @@ void* goldbach_cola_secundaria(void* cola) {
       actual = arreglo_nodo_conseguir_siguiente(actual);
     }
   }
+  return NULL;
 }

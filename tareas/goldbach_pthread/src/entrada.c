@@ -18,7 +18,7 @@ int entrada_ejecutar(int argc, char* argv[]) {
   if (total_threads > 0) {
     arreglo_t* cola = (arreglo_t*)calloc(1, sizeof(arreglo_t));
     arreglo_init(cola);
-    error = entrada_extraer_archivo(cola);
+    error = entrada_get_file(cola);
     error = goldbach_suma_total(cola, total_threads);
     if (error == EXIT_SUCCESS) {
       entrada_imprimir(cola);
@@ -37,13 +37,13 @@ int entrada_ejecutar(int argc, char* argv[]) {
   return error;  
 }
 
-int entrada_extraer_archivo(arreglo_t * cola) {
+int entrada_get_file(arreglo_t * cola) {
   int64_t valor_actual = 0;
   int error = EXIT_SUCCESS;
   int invalido = 0;
   while (feof(stdin) == 0) {
     if (fscanf(stdin, "%ld", &valor_actual) == 1) {
-      entrada_validar(&invalido);
+      entrada_validate(&invalido);
       error = arreglo_posible_insertar(cola, valor_actual, invalido);
       invalido = 0;
     } else {
@@ -62,7 +62,7 @@ void ignorar_linea() {
   }
 }
 
-void entrada_validar(int* invalido) {
+void entrada_validate(int* invalido) {
   if (errno == ERANGE) {
     *invalido = 1;
     clearerr(stdin);
@@ -118,7 +118,7 @@ void entrada_imprimir(arreglo_t* cola) {
     }
     // Nuestro caso ideal
     if (valor > 5 || valor < -5) {
-       fprintf(stdout,"%ld: ", valor);
+      fprintf(stdout,"%ld: ", valor);
       sumas = entrada_conseguir_sumas(actual, valor);
       if (valor < -5) {
         valor_positivo = valor + (valor * -2); 
@@ -126,7 +126,7 @@ void entrada_imprimir(arreglo_t* cola) {
       }
       fprintf(stdout, "\n");
     }
-    actual = cola_nodo_conseguir_siguiente(actual);
+    actual = arreglo_nodo_conseguir_siguiente(actual);
   }
 }
 

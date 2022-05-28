@@ -33,7 +33,7 @@ int pthread_crear_hilos(shared_data_t* shared_data) {
        goldbach_cola_secundaria, /*arg*/ &private_data[thread_counter]);
 
       if (error) {
-        fprintf(stderr, "ERROR: could not create thread [%lu]\n",
+        fprintf(stderr, "ERROR: No se puede crear el hilo [%lu]\n",
           thread_counter);
         break;
       }
@@ -50,7 +50,7 @@ int pthread_crear_hilos(shared_data_t* shared_data) {
   return error;
 }
 
-void pthread_distribucion(private_data_t * arreglo_privado,
+void pthread_distribucion(private_data_t* arreglo_privado,
   shared_data_t * shared_data) {
   arreglo_t * cola = shared_data->cola;
   uint64_t hilos = shared_data->hilos;
@@ -84,9 +84,9 @@ void pthread_distribucion(private_data_t * arreglo_privado,
       // Esto lo hacemos para que puedan caber los hilos extra
       arreglo_privado[thread_number].primero = temporal;
       arreglo_privado[thread_number++].ultimo = actual;
-      temporal = cola_nodo_conseguir_siguiente(actual);
+      temporal = arreglo_nodo_conseguir_siguiente(actual);
       contador = 0;
     }
-    actual = cola_nodo_conseguir_siguiente(actual);
+    actual = arreglo_nodo_conseguir_siguiente(actual);
   }
 }
