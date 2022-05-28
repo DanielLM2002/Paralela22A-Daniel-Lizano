@@ -34,7 +34,7 @@ void arreglo_init(arreglo_t* cola) {
   assert(cola);
   cola->primero = NULL;
   cola->ultimo = NULL;
-  cola->tamano = 0;
+  cola->tamanio = 0;
 }
 /**
  * @brief metodo usado para introducir numeros al arreglo
@@ -66,7 +66,7 @@ int arreglo_insertar(arreglo_t* cola, int64_t valor, int valido) {
       cola->ultimo->siguiente = nuevo_nodo;
       cola->ultimo = cola->ultimo->siguiente;
     }
-    ++cola->tamano;
+    ++cola->tamanio;
   } else {
     error = EXIT_FAILURE;
     fprintf(stderr, "ERROR: No hay suficiente memoria para agregar el item.");

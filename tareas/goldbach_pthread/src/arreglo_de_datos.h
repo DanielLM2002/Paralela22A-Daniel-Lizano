@@ -15,7 +15,7 @@ typedef struct arreglo_nodo arreglo_nodo_t;
 typedef struct arreglo {
   arreglo_nodo_t * primero; 
   arreglo_nodo_t * ultimo;
-  int64_t tamano;
+  int64_t tamanio;
 }arreglo_t;
 
 void arreglo_init(arreglo_t * cola);
@@ -40,4 +40,4 @@ void arreglo_nodo_destruir (arreglo_nodo_t* cola_nodo);
 
 int arreglo_nodo_conseguir_validez(arreglo_nodo_t * nodo);
 
-#endif  // TAREAS_PRIMEFACT_SERIAL_SRC_COLA_H_
+#endif  

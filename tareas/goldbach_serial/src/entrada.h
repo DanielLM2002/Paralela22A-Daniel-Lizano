@@ -15,16 +15,16 @@
 
 //#include "calculator.h"
 
-typedef struct interfaz {
+typedef struct entrada {
   int error;
-} interfaz_t;
+} entrada_t;
 
 
-void entrada_init(interfaz_t * interfaz);
+void entrada_init(entrada_t * interfaz);
 
 int entrada_ejecutar();
 
-void entrada_get_file(interfaz_t * interfaz, arreglo_t * cola);
+void entrada_get_file(entrada_t * interfaz, arreglo_t * cola);
 
 void ignorar_linea();
 

@@ -12,15 +12,10 @@
 
 #include "arreglo_de_datos.h"
 
-
-//#include "calculator.h"
-
-typedef struct interfaz {
+typedef struct entrada {
   int error;
-} interfaz_t;
+} entrada_t;
 
-
-//void entrada_init(interfaz_t * interfaz);
 
 int entrada_ejecutar(int argc, char* argv[]);
 

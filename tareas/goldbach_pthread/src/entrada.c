@@ -7,7 +7,14 @@
 #include <time.h>
 #include "entrada.h"
 #include "sumas.h"
-
+/**
+ * @brief metodo encargado de realizar la ejeccuion del
+ * programa en el main
+ * @details ademas de correr el programa tambien medira el tiempo
+ * @param argc 
+ * @param argv 
+ * @return int 
+ */
 int entrada_ejecutar(int argc, char* argv[]) {
   int error = EXIT_SUCCESS;
   
@@ -23,7 +30,7 @@ int entrada_ejecutar(int argc, char* argv[]) {
     if (error == EXIT_SUCCESS) {
       entrada_imprimir(cola);
     } else {
-      fprintf(stderr, "ERROR: there was an unknown error\n");
+      fprintf(stderr, "ERROR: Fin de la memoria\n");
     }
     arreglo_destruir(cola);
     free(cola);
@@ -36,7 +43,12 @@ int entrada_ejecutar(int argc, char* argv[]) {
   printf("Duracion: %.9lfs\n", tiempo);
   return error;  
 }
-
+/**
+ * @brief metodo para obtener archivo de la entrada estandar
+ * 
+ * @param cola 
+ * @return int 
+ */
 int entrada_get_file(arreglo_t * cola) {
   int64_t valor_actual = 0;
   int error = EXIT_SUCCESS;
@@ -54,14 +66,21 @@ int entrada_get_file(arreglo_t * cola) {
   }
   return error;
 }
-
+/**
+ * @brief metodo para ignorar lineas vacias
+ * 
+ */
 void ignorar_linea() {
   char ignorar = '\0';
   while (ignorar != EOF && ignorar != '\n') {
     ignorar = fgetc(stdin);
   }
 }
-
+/**
+ * @brief metodo para validar entradas al programa
+ * 
+ * @param invalido 
+ */
 void entrada_validate(int* invalido) {
   if (errno == ERANGE) {
     *invalido = 1;
@@ -69,7 +88,13 @@ void entrada_validate(int* invalido) {
     errno = 0;
   }
 }
-
+/**
+ * @brief metodo para imprimir el arreglo de goldbach
+ * 
+ * @param actual 
+ * @param valor 
+ * @param sumas 
+ */
 void entrada_imprimir_goldbach(arreglo_nodo_t* actual, int64_t valor, int64_t sumas) {
   int64_t numero = 0;
   int64_t contador_sumas = 0;
@@ -101,7 +126,11 @@ void entrada_imprimir_goldbach(arreglo_nodo_t* actual, int64_t valor, int64_t su
     actual_goldbach = arreglo_nodo_conseguir_siguiente(actual_goldbach);
   }
 }
-
+/**
+ * @brief metodo para imprimir invocando imprimir goldbach
+ * 
+ * @param cola 
+ */
 void entrada_imprimir(arreglo_t* cola) {
   arreglo_nodo_t* actual = cola->primero;
   int64_t valor = 0;
@@ -129,7 +158,13 @@ void entrada_imprimir(arreglo_t* cola) {
     actual = arreglo_nodo_conseguir_siguiente(actual);
   }
 }
-
+/**
+ * @brief metodo usado parea obtener las sumas de sumas.c
+ * 
+ * @param actual 
+ * @param valor 
+ * @return int 
+ */
 int entrada_conseguir_sumas(arreglo_nodo_t* actual, int64_t valor) {
   bool es_impar = true;
   if (valor % 2 == 0) {
@@ -158,17 +193,23 @@ int entrada_conseguir_sumas(arreglo_nodo_t* actual, int64_t valor) {
   fprintf(stdout, "%i sums: ", contador_total);
   return contador_total;
 }
-
+/**
+ * @brief metodo para validar la entrada en el porgrama
+ * 
+ * @param argc 
+ * @param argv 
+ * @return int64_t 
+ */
 int64_t entrada_validacion_entrada(int argc, char* argv[]) {
   int64_t total_threads = sysconf(_SC_NPROCESSORS_ONLN);
   if (argc == 2) {
     if (sscanf(argv[1], "%ld", &total_threads) == 0 || total_threads < 1
      || errno == ERANGE) {
        if (errno) {
-        fprintf(stderr, "ERROR: Exceso de threads\n");
+        fprintf(stderr, "ERROR: overflow de memoria\n");
        } else {
         fprintf(stderr,
-         "ERROR: numero de threads tiene que ser positivo\n");
+         "ERROR: la cantidad de hilos no es positiva\n");
        }
       total_threads = 0;
     }

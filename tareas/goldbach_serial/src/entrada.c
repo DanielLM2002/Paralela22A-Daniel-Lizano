@@ -11,7 +11,7 @@
  * 
  * @param interfaz 
  */
-void entrada_init(interfaz_t* interfaz) {
+void entrada_init(entrada_t* interfaz) {
   interfaz->error = EXIT_SUCCESS;
 }
 /**
@@ -20,7 +20,7 @@ void entrada_init(interfaz_t* interfaz) {
  * @param interfaz 
  * @return int 
  */
-int entrada_ejecutar(interfaz_t* interfaz) {
+int entrada_ejecutar(entrada_t* interfaz) {
   arreglo_t cola;  // cola para guardar numeros del archivo 
   arreglo_init(&cola);
 
@@ -47,7 +47,7 @@ int entrada_ejecutar(interfaz_t* interfaz) {
  * @param interfaz 
  * @param cola 
  */
-void entrada_get_file(interfaz_t * interfaz, arreglo_t * cola) {
+void entrada_get_file(entrada_t * interfaz, arreglo_t * cola) {
   int64_t valor_actual = 0;
   int invalido = 0;
   while (feof(stdin) == 0) {

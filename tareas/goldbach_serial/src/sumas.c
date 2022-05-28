@@ -66,7 +66,7 @@ bool goldbach_es_primo (int64_t numero) {
  * @param cola_goldbach 
  * @return int 
  */
-int goldbach_par(int64_t numero, arreglo_t* cola_goldbach) {
+int goldbach_suma_par(int64_t numero, arreglo_t* cola_goldbach) {
   int error = EXIT_SUCCESS;
 
   for (int64_t i = 2; i < numero; i++) {
@@ -91,7 +91,7 @@ int goldbach_par(int64_t numero, arreglo_t* cola_goldbach) {
  * @param cola_goldbach 
  * @return int 
  */
-int goldbach_impar(int64_t numero, arreglo_t* cola_goldbach) {
+int goldbach_suma_impar(int64_t numero, arreglo_t* cola_goldbach) {
   int error = EXIT_SUCCESS;
 
   for (int64_t i = 2; i < numero; i++) {
@@ -125,9 +125,9 @@ int goldbach_impar(int64_t numero, arreglo_t* cola_goldbach) {
 int goldbach_suma_numero(int64_t numero, arreglo_t* cola_goldbach) {
   
   if (numero % 2 == 0) {
-    return goldbach_par(numero, cola_goldbach);
+    return goldbach_suma_par(numero, cola_goldbach);
   } else {
-    return goldbach_impar(numero, cola_goldbach);
+    return goldbach_suma_impar(numero, cola_goldbach);
   }
 
 }

@@ -15,8 +15,8 @@
  */
 int goldbach_suma_total(arreglo_t* cola, uint64_t hilos) {
   int error = EXIT_SUCCESS;
-  if (cola->tamano - 1 > 0) {
-    shared_data_t* shared_data = pthread_init_shared_data(cola, hilos);
+  if (cola->tamanio - 1 > 0) {
+    shared_data_t* shared_data = pthread_init_shdata(cola, hilos);
     error = pthread_crear_hilos(shared_data);
     shared_data->hilos = 0;
     shared_data->cola = NULL;
@@ -51,7 +51,7 @@ bool goldbach_es_primo (int64_t numero) {
  * @param cola_goldbach 
  * @return int 
  */
-int goldbach_par(int64_t numero, arreglo_t* cola_goldbach) {
+int goldbach_suma_par(int64_t numero, arreglo_t* cola_goldbach) {
   int error = EXIT_SUCCESS;
   if (numero < -5) {
     numero = numero + (numero * -2);
@@ -77,7 +77,7 @@ int goldbach_par(int64_t numero, arreglo_t* cola_goldbach) {
  * @param cola_goldbach 
  * @return int 
  */
-int goldbach_impar(int64_t numero, arreglo_t* cola_goldbach) {
+int goldbach_suma_impar(int64_t numero, arreglo_t* cola_goldbach) {
   int error = EXIT_SUCCESS;
   if (numero < -5) {
     numero = numero + (numero * -2);
@@ -112,13 +112,19 @@ int goldbach_impar(int64_t numero, arreglo_t* cola_goldbach) {
  */
 int goldbach_suma_numero(int64_t numero, arreglo_t* cola_goldbach) {
   if (numero % 2 == 0) {
-    return goldbach_par(numero, cola_goldbach);
+    return goldbach_suma_par(numero, cola_goldbach);
   } else {
-    return goldbach_impar(numero, cola_goldbach);
+    return goldbach_suma_impar(numero, cola_goldbach);
   }
 }
-
-void* goldbach_cola_secundaria(void* cola) {
+/**
+ * @brief metodo para realizar las sumas secundarias despues
+ * del primer ciclo de sumas
+ * 
+ * @param cola 
+ * @return void* 
+ */
+void* goldbach_suma_aux(void* cola) {
   private_data_t* private_data = (private_data_t*)cola;
   arreglo_nodo_t* actual = private_data->primero;
   while (actual) {

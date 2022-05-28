@@ -50,6 +50,29 @@ bin\goldbach_phtread < test/input001.txt
 ```
 Siendo la barra de test los casos de prueba que se usarán para la revisión del programa. 
 
+## CLASE HILOS
+```
+typedef struct shared_data {
+  arreglo_t * cola;
+  uint64_t hilos;
+} shared_data_t;
+
+typedef struct private_data {
+  arreglo_nodo_t* primero;
+  arreglo_nodo_t* ultimo;
+} private_data_t;
+
+shared_data_t* pthread_init_shared_data(arreglo_t* cola, uint64_t hilos);
+
+int pthread_crear_hilos(shared_data_t* shared_data);
+
+void pthread_distribucion(private_data_t* private_array,
+    shared_data_t* shared_data);
+```
+Atraves de los siguientes métodos es como lograremos implementar el multihilo en el programa. Los metodos se encargan de las funciones basicas de un hilo, crear, iniciar y distribuir. El join solo lo usaremos cuando debamos de liberar estos hilos y cerrarlos, es por eso que no tenemos un método destroy. 
+
+---
+
 *Agradecimientos y créditos*
 Gracias al profesor Jeisson por manetener la página de donde pude sacar información para este proyecto, y también por dar un ejemplo en java sobre como realizar los cálculos.
 Obtenido de https://jeisson.ecci.ucr.ac.cr/principios/2013b/examenes/examen01/Goldbach2.java. 
