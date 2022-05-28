@@ -35,7 +35,7 @@ bool goldbach_es_primo (int64_t numero) {
   bool resultado = false;
   if (numero >= 2) {
     resultado = true;
-    int64_t limite = numero-1;
+    double limite = sqrt((double)(numero));
     for (int i = 2; i <= limite; i++) {
       if (numero % i == 0) {
           resultado = false;
@@ -53,20 +53,21 @@ bool goldbach_es_primo (int64_t numero) {
  */
 int goldbach_par(int64_t numero, arreglo_t* cola_goldbach) {
   int error = EXIT_SUCCESS;
-
-  for (int64_t i = 2; i < numero; i++) {
+  if (numero < -5) {
+    numero = numero + (numero * -2);
+  }
+  int64_t numero_aux = 0;
+  for (int i = 2; i < numero; i++) {//si no funca cambiar por int64
     if (goldbach_es_primo(i) == true) {
-      for (int64_t j = 0; j < numero; j++) {
-        if (i + j == numero && goldbach_es_primo(j) == true) {
-          error = arreglo_posible_insertar(cola_goldbach, i , 0);
-          error = arreglo_posible_insertar(cola_goldbach, j, 0);
-        }
+      numero_aux = numero - i;
+      if (i + numero_aux == numero &&
+       goldbach_es_primo(numero_aux) == true && i < numero_aux) {
+         error = arreglo_posible_insertar(cola_goldbach, i, 0);
+         error = arreglo_posible_insertar(cola_goldbach, numero_aux, 0);
       }
     }
   }
-
   return error;
-
 }
 
 /**
