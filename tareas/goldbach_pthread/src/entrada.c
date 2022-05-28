@@ -41,7 +41,7 @@ int entrada_ejecutar(int argc, char* argv[]) {
   double tiempo = finish_time.tv_sec - start_time.tv_sec + 
   (finish_time.tv_nsec - start_time.tv_nsec) / 10000000000.0;
   printf("Duracion: %.9lfs\n", tiempo);
-  return error;  
+  return error;
 }
 /**
  * @brief metodo para obtener archivo de la entrada estandar
@@ -91,14 +91,14 @@ void entrada_validate(int* invalido) {
 /**
  * @brief metodo para imprimir el arreglo de goldbach
  * 
- * @param actual 
- * @param valor 
- * @param sumas 
+ * @param actual
+ * @param valor
+ * @param sumas
  */
 void entrada_imprimir_goldbach(arreglo_nodo_t* actual, int64_t valor, int64_t sumas) {
   int64_t numero = 0;
   int64_t contador_sumas = 0;
-  arreglo_nodo_t* actual_goldbach = 
+  arreglo_nodo_t* actual_goldbach =
     arreglo_nodo_conseguir_cola_goldbach(actual)->primero;
   bool es_impar = true;
   if (valor % 2 == 0) {
@@ -145,12 +145,11 @@ void entrada_imprimir(arreglo_t* cola) {
     if (valor >= -5 && valor <= 5) {
         fprintf(stdout,"%ld: NA\n", valor);
     }
-    // Nuestro caso ideal
     if (valor > 5 || valor < -5) {
       fprintf(stdout,"%ld: ", valor);
       sumas = entrada_conseguir_sumas(actual, valor);
       if (valor < -5) {
-        valor_positivo = valor + (valor * -2); 
+        valor_positivo = valor + (valor * -2);
         entrada_imprimir_goldbach(actual, valor_positivo, sumas);
       }
       fprintf(stdout, "\n");
@@ -161,9 +160,9 @@ void entrada_imprimir(arreglo_t* cola) {
 /**
  * @brief metodo usado parea obtener las sumas de sumas.c
  * 
- * @param actual 
- * @param valor 
- * @return int 
+ * @param actual
+ * @param valor
+ * @return int
  */
 int entrada_conseguir_sumas(arreglo_nodo_t* actual, int64_t valor) {
   bool es_impar = true;
@@ -172,7 +171,7 @@ int entrada_conseguir_sumas(arreglo_nodo_t* actual, int64_t valor) {
   }
   int contador = 0;
   int contador_total = 0;
-  arreglo_nodo_t* actual_goldbach = 
+  arreglo_nodo_t* actual_goldbach =
     arreglo_nodo_conseguir_cola_goldbach(actual)->primero;
   while (actual_goldbach) {
     if (es_impar) {
@@ -196,9 +195,9 @@ int entrada_conseguir_sumas(arreglo_nodo_t* actual, int64_t valor) {
 /**
  * @brief metodo para validar la entrada en el porgrama
  * 
- * @param argc 
- * @param argv 
- * @return int64_t 
+ * @param argc
+ * @param argv
+ * @return int64_t
  */
 int64_t entrada_validacion_entrada(int argc, char* argv[]) {
   int64_t total_threads = sysconf(_SC_NPROCESSORS_ONLN);
@@ -207,10 +206,9 @@ int64_t entrada_validacion_entrada(int argc, char* argv[]) {
      || errno == ERANGE) {
        if (errno) {
         fprintf(stderr, "ERROR: overflow de memoria\n");
-       } else {
-        fprintf(stderr,
-         "ERROR: la cantidad de hilos no es positiva\n");
-       }
+      } else {
+        fprintf(stderr,"ERROR: la cantidad de hilos no es positiva\n");
+      }
       total_threads = 0;
     }
   }
