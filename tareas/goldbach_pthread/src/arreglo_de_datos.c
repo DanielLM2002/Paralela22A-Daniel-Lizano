@@ -20,9 +20,8 @@ typedef struct arreglo_nodo {
   // valor del valoro
   int64_t valor;
 
-  // Indica si el valor es invalido o no 
+  // Indica si el valor es invalido o no
   int validez;
-
 } arreglo_nodo_t;
 /**
  * @brief Metodo encargado de iniciar arreglo(cola) que usaremos
@@ -48,17 +47,15 @@ int arreglo_insertar(arreglo_t* cola, int64_t valor, int valido) {
   assert(cola);
   int error = EXIT_SUCCESS;
 
-  
-  arreglo_nodo_t* nuevo_nodo = (arreglo_nodo_t *) 
+
+  arreglo_nodo_t* nuevo_nodo = (arreglo_nodo_t *)
     calloc(1, sizeof(arreglo_nodo_t));
 
   
   if (nuevo_nodo) {
-    
     nuevo_nodo->valor = valor;
     nuevo_nodo->validez = valido;
     arreglo_init(&nuevo_nodo->cola_goldbach);
-
     if (cola->ultimo == NULL) {
       cola->primero = nuevo_nodo;
       cola->ultimo = nuevo_nodo;
@@ -175,4 +172,3 @@ arreglo_t* arreglo_nodo_conseguir_cola_goldbach(arreglo_nodo_t* nodo) {
 int arreglo_nodo_conseguir_validez(arreglo_nodo_t* nodo) {
   return nodo->validez;
 }
-

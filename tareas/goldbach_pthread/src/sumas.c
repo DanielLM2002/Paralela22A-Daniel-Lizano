@@ -31,15 +31,15 @@ int goldbach_suma_total(arreglo_t* cola, uint64_t hilos) {
  * @return true 
  * @return false 
  */
-bool goldbach_es_primo (int64_t numero) {
+bool goldbach_es_primo(int64_t numero) {
   bool resultado = false;
   if (numero >= 2) {
     resultado = true;
     double limite = sqrt((double)(numero));
     for (int i = 2; i <= limite; i++) {
       if (numero % i == 0) {
-          resultado = false;
-      } 
+        resultado = false;
+      }
     }
   }
   return resultado;
@@ -88,7 +88,7 @@ int goldbach_suma_impar(int64_t numero, arreglo_t* cola_goldbach) {
       for (int64_t j = 2; j < numero; j++) {
         if (goldbach_es_primo(j) == true && j != numero) {
           numero_temp = numero - (j + i);
-          if (i + j + numero_temp == numero && 
+          if (i + j + numero_temp == numero &&
            goldbach_es_primo(numero_temp)) {
             if (i <= j && i <= numero_temp && j <= numero_temp) {
               error = arreglo_posible_insertar(cola_goldbach, i, 0);
