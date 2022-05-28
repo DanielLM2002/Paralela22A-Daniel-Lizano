@@ -5,12 +5,18 @@ procedure goldbach_serial
     if (verdad)
         if es_par(datos)
             do conjetura fuerte
+            realizar_sumas(item)
             insert_arreglo(arreglo)
+            send_to_entrada(nodo)
         if es_impar
             do conjetura debil
+            realizar_sumas(item)
             insert_arreglo(arreglo)
+            send_to_entrada(nodo)
         
     else
         ignorar
     print arreglo
-    
+    free arreglo(arreglo)
+    free nodo(nodo)
+end procedure

@@ -2,3 +2,5 @@ bin/
 build/
 doc/
 .vscode/
+.DS_Store/
+Null.d/
