@@ -34,9 +34,9 @@ int pthread_crear_hilos(shared_data_t* shared_data) {
   if (shared_data->hilos > data_size) {
     shared_data->hilos = data_size;
   }
-  pthread_t* threads = (pthread_t *) calloc(shared_data->hilos,
+  pthread_t* threads = (pthread_t*) calloc(shared_data->hilos,
     sizeof(pthread_t));
-  private_data_t* private_data = (private_data_t *) calloc(shared_data->hilos,
+  private_data_t* private_data = (private_data_t*) calloc(shared_data->hilos,
     sizeof(private_data_t));
   if (threads && private_data) {
     pthread_repartir(private_data, shared_data);
