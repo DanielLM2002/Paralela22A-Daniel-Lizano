@@ -94,7 +94,7 @@ void entrada_validate(int* invalido) {
  * @param valor
  * @param sumas
  */
-void entrada_imprimir_goldbach(arreglo_nodo_t* actual, int64_t valor, 
+void entrada_imprimir_goldbach(arreglo_nodo_t* actual, int64_t valor,
                                 int64_t sumas) {
   int64_t numero = 0;
   int64_t contador_sumas = 0;

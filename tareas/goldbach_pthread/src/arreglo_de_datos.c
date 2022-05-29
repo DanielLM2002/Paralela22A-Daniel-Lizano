@@ -50,8 +50,6 @@ int arreglo_insertar(arreglo_t* cola, int64_t valor, int valido) {
 
   arreglo_nodo_t* nuevo_nodo = (arreglo_nodo_t *)
     calloc(1, sizeof(arreglo_nodo_t));
-
-  
   if (nuevo_nodo) {
     nuevo_nodo->valor = valor;
     nuevo_nodo->validez = valido;
