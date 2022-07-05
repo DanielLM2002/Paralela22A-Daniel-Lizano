@@ -1,0 +1,29 @@
+procedure arreglo_init:
+    Creamos los espacios para la estructura y llamamos calloc
+end procedure
+
+procedure entrada_get_file:
+    leemos el archivo de la entrada estandar
+    verificamos si es una cadena valida 
+    si es valida la ingresamos al arreglo
+end procedure
+
+procedure sumas_goldbach:
+    agarrar nodo i del arreglo
+    revisar si es primo
+    revisar si es suma par
+    revisar si es suma impar
+    volver a meter nodos calculado al arreglo
+end procedure
+
+procedure destroy_estructura:
+    destruir e4structura de datos una vez que ya hayan sido usadas
+end procedure
+
+procedure crear_hilos:
+    iniciamos nuestro arreglo de hilos
+    creamos hilos y les asignamos un trabajo y sus parametros
+    realizar join de los hilos
+    imprimir los sumas_goldbach
+    liberar memoria
+end procedure
