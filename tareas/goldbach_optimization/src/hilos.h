@@ -27,8 +27,7 @@ void generarPrimos(primos_t* primos, int64_t contenido_nodo_arreglo);
 
 
 void agreagarSumas(nodoNumero_t* num
-        , datos_compartidos_t* shared_data);
-
+    , datos_compartidos_t* shared_data);
 
 bool esPar(int64_t num);
 
@@ -37,8 +36,8 @@ void* sumaPar(void* number_data);
 void* sumaImpar(void* number_data);
 
 void crear_threads(nodoNumero_t* num, pthread_t* threads
-        , datos_compartidos_t* shared_data
-        , datos_privados_t* private_data
-        , void* trabajo);
+    , datos_compartidos_t* shared_data
+    , datos_privados_t* private_data
+    , void* trabajo);
 
 #endif  // HILOS_H
