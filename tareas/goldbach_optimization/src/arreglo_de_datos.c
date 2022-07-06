@@ -29,5 +29,32 @@ void arreglo_dinamico_destroy(arreglo_dinamico_t* elemento) {
     free(elemento->nodos);
 }
 
+int64_t arreglo_dinamico_append(arreglo_dinamico_t* elemento, int64_t valor, int validacion) {
+    assert(elemento);
+    int64_t error = EXIT_SUCCESS;
+    if (elemento->capacidad == elemento->tamanio) {
+        error = arreglo_dinamico_add(elemento);
+    }
+    // NOTE: memoria ya inicializada
+    elemento->nodos[elemento->capacidad].num = valor;
+    elemento->nodos[elemento->capacidad].bander = validacion;
+    elemento->nodos[elemento->capacidad].sumas = arreglo_sumas_init();
+    elemento->capacidad++;
+    return error;
+}
 
+
+int64_t arreglo_dinamico_add(arreglo_dinamico_t* elemento) {
+    size_t nueva_capacidad = 2 * (elemento->tamanio? elemento->tamanio : 1);
+    nodoNumero_t* nuevos_nodos = (nodoNumero_t*)realloc(elemento->nodos
+            , nueva_capacidad * sizeof(nodoNumero_t));
+    if (nuevos_nodos) {
+        elemento->tamanio = nueva_capacidad;
+        elemento->nodos = nuevos_nodos;
+        return EXIT_SUCCESS;
+    } else {
+        // No se pudo aumentar el tamaño del arreglo
+        return EXIT_FAILURE;
+    }
+}
 
