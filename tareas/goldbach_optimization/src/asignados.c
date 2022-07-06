@@ -31,3 +31,25 @@ int64_t primos_agregar(primos_t* numero_primo, int64_t _valor) {
     numero_primo->capacidad++;
     return error;
 }
+
+int64_t distribuir_mapeo_dinamico(int64_t hilo, int64_t cantidad_datos
+        , int64_t cantidad_threads) {
+    int64_t min = (hilo > (cantidad_datos % cantidad_threads))
+        ? cantidad_datos % cantidad_threads : hilo;
+    int64_t division = floorl(cantidad_datos/cantidad_threads);
+    return (hilo * division) + min;
+}
+
+
+int64_t arreglo_primos_aumentar(primos_t* numero_primo) {
+    size_t nueva_capacidad = 2 * (numero_primo->tamanio? numero_primo->tamanio : 1);
+    int64_t* nuevos_primos = (int64_t*)realloc(numero_primo->primos
+            , nueva_capacidad * sizeof(int64_t));
+    if (nuevos_primos) {
+        numero_primo->tamanio = nueva_capacidad;
+        numero_primo->primos = nuevos_primos;
+        return EXIT_SUCCESS;
+    } else {
+        return 41;
+    }
+}
