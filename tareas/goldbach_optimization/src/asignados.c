@@ -47,7 +47,8 @@ int64_t distribuir_mapeo_dinamico(int64_t hilo, int64_t cantidad_datos
 
 
 int64_t arreglo_primos_aumentar(primos_t* numero_primo) {
-    size_t nueva_capacidad = 2 * (numero_primo->tamanio? numero_primo->tamanio : 1);
+    size_t nueva_capacidad = 2 * (numero_primo->tamanio? numero_primo->
+        tamanio : 1);
     int64_t* nuevos_primos = (int64_t*)realloc(numero_primo->primos
             , nueva_capacidad * sizeof(int64_t));
     if (nuevos_primos) {

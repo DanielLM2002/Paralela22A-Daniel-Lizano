@@ -53,6 +53,7 @@ void arreglo_dinamico_destroy(arreglo_dinamico_t* elemento);
  *
  * @return Retorna un código deerror si algo salió mal.
  */
-int64_t arreglo_dinamico_append(arreglo_dinamico_t* elemento, int64_t valor, int validacion);
+int64_t arreglo_dinamico_append(arreglo_dinamico_t* elemento, int64_t valor,
+    int validacion);
 
-#endif // ARREGLO_NUMEROS_H
+#endif  //  ARREGLO_NUMEROS_H

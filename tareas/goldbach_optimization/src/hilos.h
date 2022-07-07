@@ -9,7 +9,7 @@
 #include "asignados.h"
 #include "arreglo_de_datos.h"
 
-//  shared data para todos los hilos 
+    //  shared data para todos los hilos
 typedef struct shared_data {
     int64_t cantidad_threads;
     primos_t* primos;

@@ -33,7 +33,8 @@ void arreglo_dinamico_destroy(arreglo_dinamico_t* elemento) {
     free(elemento->nodos);
 }
 
-int64_t arreglo_dinamico_append(arreglo_dinamico_t* elemento, int64_t valor, int validacion) {
+int64_t arreglo_dinamico_append(arreglo_dinamico_t* elemento, int64_t valor,
+    int validacion) {
     assert(elemento);
     int64_t error = EXIT_SUCCESS;
     if (elemento->capacidad == elemento->tamanio) {

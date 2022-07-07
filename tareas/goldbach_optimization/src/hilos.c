@@ -6,7 +6,6 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdbool.h>
 #include <pthread.h>
 #include "asignados.h"
@@ -16,7 +15,8 @@
 int64_t MINIMO_PERMITIDO = 6;
 primos_t primos;
 
-arreglo_dinamico_t* calcular(arreglo_dinamico_t* number_data, uint64_t thread_count) {
+arreglo_dinamico_t* calcular(arreglo_dinamico_t* number_data,
+    uint64_t thread_count) {
     assert(number_data);
 
     // Se crea la memoria compartida para cada thread.
