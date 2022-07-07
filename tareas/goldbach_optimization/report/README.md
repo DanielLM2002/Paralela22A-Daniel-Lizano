@@ -38,3 +38,4 @@ Para averiguar la mejor solucion analisamos los resultados con diferentes prueba
 | 2C | 16 |
 | 4C | 32 |
 | D | 25 |
+Como podemos ver en las imagenes que vinen incluidas en el reporte podemos concluir que la mayor eficiencia la alcanzamos al usar 1C, osea la misma cantidad de hilos que de nucleos de procesador, en este caso siendo 8.
