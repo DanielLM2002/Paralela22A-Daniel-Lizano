@@ -25,10 +25,29 @@ typedef struct {
     nodoNumero_t* nodos;
 } arreglo_dinamico_t;
 
+/**
+ * @brief Crea el arreglo dinámico para nodos numero.
+ *
+ * @param arreglo dirección al registro donde opera.
+ */
 void arreglo_dinamico_init(arreglo_dinamico_t* elemento);
 
+/**
+ * @brief Destruye el arreglo dinámico que se solicite.
+ *
+ * @param arreglo Dirección al arreeglo que se desea eleiminar.
+ */
 void arreglo_dinamico_destroy(arreglo_dinamico_t* elemento);
 
+/**
+ * @brief Agrega un nodo numero a un arreglo dinamico.
+ *
+ * @param elemento Dirección al arreglo donde se busca opera
+ * @param valor Es el valor que entrara al arreglo.
+ * @param validacion validador del estado del nodo
+ *
+ * @return Retorna un código deerror si algo salió mal.
+ */
 int64_t arreglo_dinamico_append(arreglo_dinamico_t* elemento, int64_t valor, int validacion);
 
 #endif // ARREGLO_NUMEROS_H

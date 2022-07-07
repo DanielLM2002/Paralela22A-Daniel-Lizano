@@ -18,6 +18,12 @@ typedef struct {
     nodoSuma_t* nodosSuma;
 } sumas_logradas;
 
+
+/**
+ * @brief Crea el arreglo dinámico para nodos suma.
+ *
+ * @param arreglo dirección al registro donde opera.
+ */
 sumas_logradas* arreglo_sumas_init(void);
 
 /**
@@ -30,8 +36,25 @@ sumas_logradas* arreglo_sumas_init(void);
 
 void sumas_delete(sumas_logradas* sums, bool valid_num);
 
+
+/**
+ * @brief Realiza push del arreglo a la pila.
+ *
+ * @param arreglo Dirección al arreglo que se desea operar.
+ * @return Retorna un código de error si algo salió mal.
+ */
 int64_t sumas_push(sumas_logradas* arreglo);
 
+/**
+ * @brief Agrega un nodo suma a un arreglo dinamico.
+ *
+ * @param sums Dirección al arreglo donde se busca operar.
+ * @param digito Valor del primer dato del objeto.
+ * @param digito2 Valor del cola dato del objeto.
+ * @param digito3 Valor del auxiliar dato del objeto.
+ *
+ * @return Retorna un código deerror si algo salió mal.
+ */
 int64_t sumas_Add(sumas_logradas* sums, int64_t digito
     , int64_t digito2, int64_t digito3);
 
