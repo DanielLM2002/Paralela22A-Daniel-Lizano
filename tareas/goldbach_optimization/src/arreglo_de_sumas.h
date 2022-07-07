@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Clase encargada de guardar las sumas para poder distribuirlas y 
+ * enviarlas a la clase entrada.
+ */
 #ifndef ARREGLO_SUMAS_H
 #define ARREGLO_SUMAS_H
 

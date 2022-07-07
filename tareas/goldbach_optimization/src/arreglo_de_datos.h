@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Arreglo de datos que permite alamcenar todo lo
+ * ecnontrado en el archivo de entrada.
+ */
 #ifndef ARREGLO_NUMEROS_H
 #define ARREGLO_NUMEROS_H
 

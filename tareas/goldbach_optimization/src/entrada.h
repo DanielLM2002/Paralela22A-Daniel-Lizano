@@ -1,3 +1,7 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Calse encargada de recibir el archivo de texto y leerlo
+ */
 #ifndef ENTRADA_H
 #define ENTRADA_H
 

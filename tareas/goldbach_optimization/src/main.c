@@ -1,3 +1,7 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * clase main encargada de invocar todo el programa
+ */
 #include <unistd.h>
 #include <inttypes.h>
 #include <pthread.h>

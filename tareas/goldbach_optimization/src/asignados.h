@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Calse encargada de recibir el arreglo con las sumas y 
+ * distribuir el trabajo
+ */
 #ifndef ASIGNADOS_H
 #define ASIGNADOS_H
 #include <stddef.h>

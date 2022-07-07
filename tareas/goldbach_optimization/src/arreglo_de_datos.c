@@ -1,4 +1,8 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Arreglo de datos que permite alamcenar todo lo
+ * ecnontrado en el archivo de entrada.
+ */
 #include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>

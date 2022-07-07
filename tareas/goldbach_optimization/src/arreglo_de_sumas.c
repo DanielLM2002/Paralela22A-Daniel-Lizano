@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Clase encargada de guardar las sumas para poder distribuirlas y 
+ * enviarlas a la clase entrada.
+ */
 #include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>

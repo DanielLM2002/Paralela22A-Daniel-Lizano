@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * clase encragada de realizar las sumas con mapero dinamico 
+ * y enciar los resultados
+ */
 #ifndef SUMAS_H
 #define SUMAS_H
 

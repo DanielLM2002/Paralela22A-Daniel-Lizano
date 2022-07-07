@@ -1,3 +1,8 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Calse encargada de crear los hilos y distribuir el trabajo
+ */
+
 #ifndef HILOS_H
 #define HILOS_H
 

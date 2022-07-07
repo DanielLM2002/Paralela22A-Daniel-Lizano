@@ -1,3 +1,9 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ * Calse encargada de crear los hilos y distribuir el trabajo
+ */
+
+#include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
