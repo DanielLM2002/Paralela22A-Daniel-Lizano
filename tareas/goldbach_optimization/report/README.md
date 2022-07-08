@@ -39,3 +39,17 @@ Para averiguar la mejor solucion analisamos los resultados con diferentes prueba
 | 4C | 32 |
 | D | 25 |
 Como podemos ver en las imagenes que vinen incluidas en el reporte podemos concluir que la mayor eficiencia la alcanzamos al usar 1C, osea la misma cantidad de hilos que de nucleos de procesador, en este caso siendo 8.
+![comaparacion 3](images/comparacion3)
+
+
+## Graficos de comparacion
+En el primer grafico de comparacion podemos ver en azul el tiempo de duracion de cada version del código mientras que en naranja el speedup.
+![comaparacion 1](images/comparacion1)
+
+
+En el segundo grafico podemos ver en azul el speed up de cada version del código mientras que en naranja la eficiencia.
+![comaparacion 2](images/comparacion2)
+
+## Analisis de resultados
+
+Podemos ver que en el analisis de concurrencia, cuando obtenemos la mejor eficiencia es cuando usamos la misma cantidad de hilos que de nucleos de procesador, en este caso 8. El caso C permite al programa aprovechar los hilos al maximo, tambien podemos observar que el aumentar hilos hace que la eficiencia baje en algunos casos hasta de manera considerable.
