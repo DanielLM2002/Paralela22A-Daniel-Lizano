@@ -1,13 +1,12 @@
 
-# TAREA 2
-## GOLDBACH PTHREAD
+# TAREA 3
+## GOLDBACH OPTIMIZATION
 ### PRIMER CICLO 2022
 #### --------
 
-Este repositorio contiene el proyecto de las sumas de Goldbach concurrentes, esta version del programa permite aplicar el método de DIVIDE y VÉNCERAS.
+Este repositorio contiene el proyecto de las sumas de Goldbach concurrentes, esta version del programa permite aplicar el método de DIVIDE y VÉNCERAS, pero de una manera mas optima y elegante, esta version cuneta con un mapeo dinamico, que permite que los hilos siempre esten ocupados con una tarea asignada.
 
-Es de esta manera que lograremos mejorar el rendimiento del programa y acortar su tiempo de ejecución de gran manera en comparación a la versión serial.
-La herrameinta que usaremos para mejorar el rendimiento serán los hilos, estos podran ser ingresados por el usuario o serán determinado por el programa en caso de que el usuario no los digite.
+Es de esta manera que lograremos mejorar el rendimiento del programa y acortar su tiempo de ejecución de gran manera en comparación a la versión paralela.
 
 El problema consiste en que para todo número entero mayor que 5 suceden una de las siguientes dos cosas: 
 ```
