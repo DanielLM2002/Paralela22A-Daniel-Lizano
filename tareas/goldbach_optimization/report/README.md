@@ -46,6 +46,7 @@ en este caso tenemos azul siendo el speedup vs naranja que seria la eficiencia.
 ## Graficos de comparacion
 ### Duración vs Speedup
 En el primer grafico de comparacion podemos ver en azul el tiempo de duracion de cada version del código mientras que en naranja el speedup.
+
 ![comparacion 1](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion1.jpeg)
 
 ### Speedup vs Eficiencia
