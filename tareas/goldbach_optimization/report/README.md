@@ -39,16 +39,18 @@ Para averiguar la mejor solucion analisamos los resultados con diferentes prueba
 | 4C | 32 |
 | D | 25 |
 Como podemos ver en las imagenes que vinen incluidas en el reporte podemos concluir que la mayor eficiencia la alcanzamos al usar 1C, osea la misma cantidad de hilos que de nucleos de procesador, en este caso siendo 8.
-![comparacion 3](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion1.jpeg)
+en este caso tenemos azul siendo el speedup vs naranja que seria la eficiencia.
+![comparacion de concurrencia](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion3.jpeg)
 
 
 ## Graficos de comparacion
+### Duración vs Speedup
 En el primer grafico de comparacion podemos ver en azul el tiempo de duracion de cada version del código mientras que en naranja el speedup.
-![comparacion 1](images/comparacion1)
+![comparacion 1](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion1.jpeg)
 
-
+### Speedup vs Eficiencia
 En el segundo grafico podemos ver en azul el speed up de cada version del código mientras que en naranja la eficiencia.
-![comparacion 2](images/comparacion2)
+![comparacion 2](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion2.jpeg)
 
 ## Analisis de resultados
 
