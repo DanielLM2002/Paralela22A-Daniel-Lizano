@@ -21,7 +21,7 @@ enum {
  * @details Banderas:
  * @details VALIDO: que el number se debe realizar todo el
  * procedimiento normal.
- * @details FUERA_DE_RANGO: que no se debe calcular y debe imprimir 'NA'.
+ * @details FUERA_DE_RANGO: que no se debe calcular y debe print 'NA'.
  * @details SIN_SUMAS: realiza el calculo pero solo imprime la cantidad
  * de sums, sin mostrar cuales son.
  */

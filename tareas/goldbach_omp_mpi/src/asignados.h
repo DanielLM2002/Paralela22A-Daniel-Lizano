@@ -1,6 +1,6 @@
 
-#ifndef ARREGLO_PRIMOS_H
-#define ARREGLO_PRIMOS_H
+#ifndef ASIGNADOS_H
+#define ASIGNADOS_H
 #include <stddef.h>
 #include <stdint.h>
 #include <math.h>
@@ -79,6 +79,6 @@ int64_t task_limit(primos_t* _primos, int64_t _valor);
 /* ---------------------------------*/
 int64_t create_task(int64_t thread, int64_t cantidad_datos
         , int64_t cantidad_threads);
-#endif  // ARREGLO_PRIMOS_H
+#endif  // ASIGNADOS_H
 
 
