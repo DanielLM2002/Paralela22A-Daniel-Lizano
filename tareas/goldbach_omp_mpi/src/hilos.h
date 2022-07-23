@@ -17,4 +17,6 @@
 /* ---------------------------------*/
 void print(FILE* salida, numbers_t* numeros);
 
+void print_sums(FILE* output, numberNode_t* node);
+
 #endif  // HILOS_H
