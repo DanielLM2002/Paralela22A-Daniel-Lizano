@@ -81,6 +81,13 @@ int64_t task_limit(primos_t* _primos, int64_t _valor);
 /* ---------------------------------*/
 int64_t create_task(int64_t thread, int64_t cantidad_datos
         , int64_t cantidad_threads);
+
+/**
+ * @brief 
+ * 
+ */
+int64_t asing_new_task(primos_t* prime_num);
+
 #endif  // ASIGNADOS_H
 
 

@@ -75,4 +75,12 @@ void arreglo_destroy(numbers_t* num);
 /* ---------------------------------*/
 int64_t arreglo_add_number(numbers_t* num, int64_t value, int state);
 
+/**
+ * @brief 
+ * 
+ * @param num 
+ * @return int64_t 
+ */
+int64_t array_alloc_more(numbers_t* num);
+
 #endif  // ARREGLO_H

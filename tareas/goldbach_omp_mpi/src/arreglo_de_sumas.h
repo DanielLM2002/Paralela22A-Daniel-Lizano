@@ -63,4 +63,10 @@ void sums_destroy(sums_t* sum_num, bool is_valid_num);
 int64_t sums_append(sums_t* sum_num, int64_t state1
         , int64_t state2, int64_t state3);
 
+/**
+ * @brief 
+ * 
+ */
+int64_t sums_more_space(sums_t* sum_num);
+
 #endif  // ARREGLO_H

@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <omp.h>
 
+
 #include "arreglo_de_sumas.h"
 
 /* -------------------------------*/
