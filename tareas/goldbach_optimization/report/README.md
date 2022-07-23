@@ -21,6 +21,8 @@ Como podemos ver debidoa como teniamos implementado el programa, el usar le mapo
 
 En esta tercera optimización se analizó el método **validate_number** y se concluyó que el algoritmo utilizado para verificar si el número que se ingresa por parámetro es primo es bastante inefciente y **kcachegrind** reveló que era el método que más CPU consumía de todos. Se decidió cambiar el algoritmo incial por el algoritmo de AKS, por lo que este método pasa de tener una complejidad computacional de O(n) inicial a tener una complejidad de 0(logᵏ n).
 
+![imagen de Kcachegrind](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_omp_mpi/images/resultado_kcachegrind_op1.png)
+
 Después de implementada esta optimización se obtuvo los siguientes resultados para el caso de prueba [input020.txt](../test/input020.txt):
 
 |                  | Optimización #1  | Optimización #2  |
@@ -54,7 +56,7 @@ Del anterior gráfico se puede concluir que la eficiencia crece en la misma medi
 
 ## Comparación #2: Concurrencia
 
-A continuación se muestra una tabla con los datos obtenidos en corridas de **goldbach_serial** y **optimización #3** con diferentes cantidades de hilos para hacer un contraste entre de la velocidad y la eficiencia de estas versiones en diferentes situaciones. Se usó el caso de prueba [input020.txt](../test/input020.txt) para tomar los datos.
+A continuación se muestra una tabla con los datos obtenidos en corridas de **goldbach_serial** y **optimización #2** con diferentes cantidades de hilos para hacer un contraste entre de la velocidad y la eficiencia de estas versiones en diferentes situaciones. Se usó el caso de prueba [input020.txt](../test/input020.txt) para tomar los datos.
 # Grado de concurrencia
 Para averiguar la mejor solucion analisamos los resultados con diferentes pruebas, para este usaremos el test input020.txt de los test medianos.
 | Prueba | Hilos |

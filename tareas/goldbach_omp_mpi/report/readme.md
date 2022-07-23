@@ -36,7 +36,7 @@ Después de implementada esta optimización se obtuvo los siguientes resultados 
 
 A continuación se presenta una tabla con los distintos datos recabados de **goldbach_serial**, **goldbach_pthread**, **optimización #1** y **optimización #2** para hacer un contraste entre todas las versiones y ver la evolución de la velocidad y eficiencia en cada etapa. Se empleó el caso de prueba [input020.txt](../test/input020.txt) para tomar los datos.
 
-![imagen de Kcachegrind](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion1.jpeg)
+![imagen de Kcachegrind](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_omp_mpi/images/resultado_kcachegrind_op1.png)
 
 |                  | goldbach_serial  | goldbach_pthread | Optimización #1  | Optimización #2  |
 |------------------|------------------|------------------|------------------|------------------|
