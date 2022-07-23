@@ -1,0 +1,7 @@
+bin/
+build/
+doc/
+.vscode/
+.DS_Store/
+null.d
+null.o: /dev/null
