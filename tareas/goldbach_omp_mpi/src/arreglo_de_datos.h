@@ -1,3 +1,6 @@
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #ifndef ARREGLO_DE_DATOS_H
 #define ARREGLO_DE_DATOS_H
 

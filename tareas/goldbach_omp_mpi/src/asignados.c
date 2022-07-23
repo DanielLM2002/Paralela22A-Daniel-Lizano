@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #include <assert.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -60,7 +62,8 @@ int64_t asing_start(primos_t* prime_num, int64_t num_value) {
  */
 /* ---------------------------------*/
 int64_t asing_new_task(primos_t* prime_num) {
-    size_t new_task_assigned = 2 * (prime_num->capacity? prime_num->capacity : 1);
+    size_t new_task_assigned = 2 *
+        (prime_num->capacity? prime_num->capacity : 1);
     int64_t* new_primes = (int64_t*)realloc(prime_num->primes
             , new_task_assigned * sizeof(int64_t));
     if (new_primes) {

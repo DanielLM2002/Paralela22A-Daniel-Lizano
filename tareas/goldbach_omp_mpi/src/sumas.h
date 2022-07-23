@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #ifndef SUMAS_H
 #define SUMAS_H
 

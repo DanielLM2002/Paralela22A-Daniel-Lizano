@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #include <assert.h>
 #include <stdio.h>
 #include <errno.h>

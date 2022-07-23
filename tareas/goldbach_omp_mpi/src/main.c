@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #include <unistd.h>
 #include <inttypes.h>
 #include <pthread.h>

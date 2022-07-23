@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #ifndef ASIGNADOS_H
 #define ASIGNADOS_H
 #include <stddef.h>

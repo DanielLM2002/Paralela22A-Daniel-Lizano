@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #ifndef ENTRADA_H
 #define ENTRADA_H
 

@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 #include <assert.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -169,7 +171,6 @@ void odd_sum(int64_t number, sums_t* un_sums, primos_t* primes
                 int64_t addition = primes->primes[first_part]
                     + primes->primes[second_part]
                     + primes->primes[third_part];
-                // Si la addition es igual al number actual agregarla como addition.
                 if (addition == current_number) {
                     sums_append(&un_sums[first_part]
                         , primes->primes[first_part]

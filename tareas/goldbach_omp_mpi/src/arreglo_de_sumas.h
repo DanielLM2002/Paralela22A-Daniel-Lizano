@@ -1,4 +1,6 @@
-
+/**
+ * Copyright [2022] Daniel Lizano UCR
+ */
 
 #ifndef ARREGLO_SUMAS_H
 #define ARREGLO_SUMAS_H
