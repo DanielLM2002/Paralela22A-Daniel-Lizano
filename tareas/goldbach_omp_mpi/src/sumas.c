@@ -15,75 +15,9 @@
 int64_t allowed_tasks = 6;
 primos_t primes;
 
-/* -------------------------------*/
-/**
- * @brief Agrega las sums de goldbach a cada nodoNumero.
- *
- * @param number Nodo donde agregar las sums.
- * @param un_sums Un arreglo de sums temporal para hacer seguridad
- * condicioinal.
- * @param primes direccíon de un arreglo con el conjunto de primes necesarios
- * para realizar los calculos.
- * @param max_prime posición en la cual no se deben continuar utilizando
- * numeros del arreglo de primes.
- * @param amount_thread cantidad de hilos con los cuales ejecutar los calculos.
- */
-/* ---------------------------------*/
-void add_sums(numberNode_t* number, sums_t* un_sums, primos_t* primes
-        , int64_t max_prime, int64_t amount_thread);
 
-/* -------------------------------*/
-/**
- * @brief Verifica si un number es par o no.
- *
- * @param number Numero ha verificar.
- *
- * @return true: si es par, false: si no es par.
- */
-/* ---------------------------------*/
-bool is_even(int64_t number);
-/* -------------------------------*/
-/**
- * @brief Genera las sums de goldbach para un number par.
- *
- * @param number el number para el cual se calculan las sums.
- * @param un_sums Un arreglo de sums temporal para hacer seguridad
- * condicioinal.
- * @param primes direccíon de un arreglo con el conjunto de primes necesarios
- * para realizar los calculos.
- * @param max_prime posición en la cual no se deben continuar utilizando
- * numeros del arreglo de primes.
- * @param amount_thread cantidad de hilos con los cuales ejecutar los calculos.
- */
-/* ---------------------------------*/
-void even_sum(int64_t number, sums_t* un_sums, primos_t* primes
-        , int64_t max_prime, int64_t amount_thread);
-/* -------------------------------*/
-/**
- * @brief Genera las sums de goldbach para un number impar.
- *
- * @param number el number para el cual se calculan las sums.
- * @param un_sums Un arreglo de sums temporal para hacer seguridad
- * condicioinal.
- * @param primes direccíon de un arreglo con el conjunto de primes necesarios
- * para realizar los calculos.
- * @param max_prime posición en la cual no se deben continuar utilizando
- * numeros del arreglo de primes.
- * @param amount_thread cantidad de hilos con los cuales ejecutar los calculos.
- */
-/* ---------------------------------*/
-void odd_sum(int64_t number, sums_t* un_sums, primos_t* primes
-        , int64_t max_prime, int64_t amount_thread);
-/* -------------------------------*/
-/**
- * @brief Une un arreglo de sums a las sums de un nodoNumero evitando
- * las posibles posiciones vacias del arreglo de sums.
- *
- * @param number direccíon al nodoNumero al cual agregar las sums.
- * @param un_sums arreglo con un conjunto de sums.
- */
-/* ---------------------------------*/
-void multiple_sums(numberNode_t* number, sums_t* un_sums);
+
+
 
 numbers_t* calculate(numbers_t* data, uint64_t thread_count) {
     assert(data);

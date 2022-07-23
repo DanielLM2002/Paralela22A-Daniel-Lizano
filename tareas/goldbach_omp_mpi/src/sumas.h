@@ -22,4 +22,17 @@
 /* ---------------------------------*/
 numbers_t* calculate(numbers_t* data, uint64_t thread_count);
 
+void add_sums(numberNode_t* number, sums_t* un_sums, primos_t* primes
+        , int64_t max_prime, int64_t amount_thread);
+
+bool is_even(int64_t number);
+
+void odd_sum(int64_t number, sums_t* un_sums, primos_t* primes
+        , int64_t max_prime, int64_t amount_thread);
+
+void even_sum(int64_t number, sums_t* un_sums, primos_t* primes
+        , int64_t max_prime, int64_t amount_thread);
+
+void multiple_sums(numberNode_t* number, sums_t* un_sums);
+
 #endif  // SUMAS_H
