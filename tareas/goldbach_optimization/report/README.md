@@ -2,7 +2,7 @@
 
 ## Optimización #1: Implementación de mapeo dinámico
 
-La primera optimización hecha fue la de sustituir el método de mapeo empleado, pasando de utilizar mapeo por bloque a utilizar mapeo dinámico para la repartición de los cálculos entre los hilos. Este mapeo dinámico implenetado sigue el patrón **productor-consumidor** donde el hilo principal es el productor y los hilos secundarios los consumidores.
+La primera optimización hecha fue la de sustituir el método de mapeo empleado, pasando de utilizar mapeo por bloque a utilizar mapeo dinámico para la repartición de los cálculos entre los hilos. Este mapeo dinámico implementado sigue el patrón **productor-consumidor** donde el hilo principal es el productor y los hilos secundarios los consumidores.
 
 Para seguir el patrón productor-consumidor se decidió usar seguridad condicional, los hilos consumidores trabajan en una celda del arreglo de objetos de tipo **goldbach_t**, un hilo obtiene el número de celda a trabajar de la variable **position** de la estructura de datos compartidos **solver**, una vez que obtiene el número de celda en el que va a trabajar se incrementa esta misma variable para que otro hilo consumidor no trabaje en una celda donde ya se está trabajando. El programa dejará de repartir celdas del arreglo cuando la variable contadora tenga el mismo valor que el tamaño del arreglo en cuestión. Para evitar condiciones de carrera y demás errores, el proceso de lectura e incremento de la variable contadora se ha protegido con un mutex para que solo un hilo a la vez haga ese proceso.
 
