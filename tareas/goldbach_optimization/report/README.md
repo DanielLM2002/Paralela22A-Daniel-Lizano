@@ -1,5 +1,5 @@
 
-# **Reportes**
+# **Reporte**
 
 ## Optimización #1: Implementación de mapeo dinámico
 
@@ -26,9 +26,9 @@ Después de implementada esta optimización se obtuvo los siguientes resultados 
 |                  | Optimización #1  | Optimización #2  |
 |------------------|------------------|------------------|
 |Hilos             | 12               | 12               | 
-|Tiempo            | 22158.37         | 375.29           |
-|Velocidad         | 3.10             | 182.88           |
-|Eficiencia        | 0.26             | 15.24            |
+|Tiempo            | 216.8 segundos         | 190.8 segundos           |
+|Velocidad         | 5.60             | 6.43           |
+|Eficiencia        | 0.70             | 0.83            |
 
 
 ## Comparación #1: Optimización
