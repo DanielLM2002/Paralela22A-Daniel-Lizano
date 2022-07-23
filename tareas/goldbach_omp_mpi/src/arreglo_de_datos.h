@@ -1,5 +1,5 @@
-#ifndef ARREGLO_NUMEROS_H
-#define ARREGLO_NUMEROS_H
+#ifndef ARREGLO_DE_DATOS_H
+#define ARREGLO_DE_DATOS_H
 
 #include <stddef.h>
 #include <stdint.h>
