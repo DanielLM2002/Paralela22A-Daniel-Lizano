@@ -68,7 +68,7 @@ void assing_add_task(primos_t* _primos);
 int64_t task_limit(primos_t* _primos, int64_t _valor);
 /* -------------------------------*/
 /**
- * @brief Genera la posición en donde iniciar a calcular utilizar los primes.
+ * @brief Genera la posición en donde iniciar a calculate utilizar los primes.
  *
  * @param thread number de thread
  * @param  cantidad_datos la cantidad de datos con la que se va a trabajar.

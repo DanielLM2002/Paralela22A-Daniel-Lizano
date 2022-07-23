@@ -3,3 +3,4 @@ tareas/goldbach_serial/null.d
 *.log
 .vscode/settings.json
 .DS_Store
+tareas/goldbach_omp_mpi/extra/paralelo.txt

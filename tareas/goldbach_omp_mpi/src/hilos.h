@@ -1,6 +1,6 @@
 
-#ifndef IMPRIMIR_H
-#define IMPRIMIR_H
+#ifndef HILOS_H
+#define HILOS_H
 
 #include <stdio.h>
 #include "arreglo_de_datos.h"
@@ -15,4 +15,4 @@
 /* ---------------------------------*/
 void print(FILE* salida, numbers_t* numeros);
 
-#endif  // IMPRIMIR_H
+#endif  // HILOS_H
