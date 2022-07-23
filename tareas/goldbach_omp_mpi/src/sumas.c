@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <pthread.h>
-#include <omp.h>
 
 
 #include "asignados.h"
