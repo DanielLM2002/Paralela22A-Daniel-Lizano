@@ -88,4 +88,4 @@ Para esta comparación se usó el cosde de prueba input020.txt, ya que este cuen
 
 Los resultados de dicha tabla se pueden ver en el grafico siguiente con el cual tambien se compara con las versiones pasadas del codigo
 
-![Gráfico de Comparación #4: Comparacion con demás versiones](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_optimization/images/comparacion3.jpeg)
+![Gráfico de Comparación #4: Comparacion con demás versiones](https://github.com/DanielLM2002/Paralela22A-Daniel-Lizano/blob/main/tareas/goldbach_omp_mpi/images/comparacion4.png)
