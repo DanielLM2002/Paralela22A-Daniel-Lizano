@@ -40,13 +40,13 @@ void asign_destroy(primos_t* prime_num) {
  * aumentar la capacida del arreglo.
  */
 /* ---------------------------------*/
-int64_t asing_start(primos_t* prime_num, int64_t _valor) {
+int64_t asing_start(primos_t* prime_num, int64_t num_value) {
     assert(prime_num);
     int error = EXIT_SUCCESS;
     if (prime_num->size == prime_num->capacity) {
         error = asing_new_task(prime_num);
     }
-    prime_num->primes[prime_num->size] = _valor;
+    prime_num->primes[prime_num->size] = num_value;
     prime_num->size++;
     return error;
 }
@@ -60,12 +60,12 @@ int64_t asing_start(primos_t* prime_num, int64_t _valor) {
  */
 /* ---------------------------------*/
 int64_t asing_new_task(primos_t* prime_num) {
-    size_t nueva_capacidad = 2 * (prime_num->capacity? prime_num->capacity : 1);
-    int64_t* nuevos_primos = (int64_t*)realloc(prime_num->primes
-            , nueva_capacidad * sizeof(int64_t));
-    if (nuevos_primos) {
-        prime_num->capacity = nueva_capacidad;
-        prime_num->primes = nuevos_primos;
+    size_t new_task_assigned = 2 * (prime_num->capacity? prime_num->capacity : 1);
+    int64_t* new_primes = (int64_t*)realloc(prime_num->primes
+            , new_task_assigned * sizeof(int64_t));
+    if (new_primes) {
+        prime_num->capacity = new_task_assigned;
+        prime_num->primes = new_primes;
         return EXIT_SUCCESS;
     } else {
         // No se pudo aumentar el tamaño del arreglo
@@ -74,45 +74,45 @@ int64_t asing_new_task(primos_t* prime_num) {
 }
 void assing_add_task(primos_t* prime_num) {
     assert(prime_num);
-    int64_t supuesto_primo;
+    int64_t possible_prime;
     if (prime_num->size) {
-        supuesto_primo = prime_num->primes[prime_num->size-1]+1;
+        possible_prime = prime_num->primes[prime_num->size-1]+1;
     } else {
-        supuesto_primo = 2;
+        possible_prime = 2;
     }
-    while (supuesto_primo <= prime_num->max_ammount) {
-        int64_t es_primo = true;
-        for (int64_t valor_actual = 2; valor_actual <= supuesto_primo
-                ; valor_actual++) {
-            int64_t operacion = supuesto_primo % valor_actual;
-            if (operacion == 0 && supuesto_primo != valor_actual) {
-                es_primo = 0;  // FALSE
-                valor_actual = supuesto_primo + 1;
+    while (possible_prime <= prime_num->max_ammount) {
+        int64_t is_prime = true;
+        for (int64_t current_value = 2; current_value <= possible_prime
+                ; current_value++) {
+            int64_t task = possible_prime % current_value;
+            if (task == 0 && possible_prime != current_value) {
+                is_prime = 0;  // FALSE
+                current_value = possible_prime + 1;
             }
         }
-        if (es_primo) {
-            asing_start(prime_num, supuesto_primo);
+        if (is_prime) {
+            asing_start(prime_num, possible_prime);
         }
-        supuesto_primo++;
+        possible_prime++;
     }
 }
-int64_t task_limit(primos_t* prime_num, int64_t _valor) {
+int64_t task_limit(primos_t* prime_num, int64_t num_value) {
     assert(prime_num);
     // Genera más primos de ser necesario.
-    if (prime_num->max_ammount < _valor) {
-        prime_num->max_ammount = _valor;
+    if (prime_num->max_ammount < num_value) {
+        prime_num->max_ammount = num_value;
         assing_add_task(prime_num);
     }
-    int64_t indice = 0;
-    while (indice < prime_num->size && prime_num->primes[indice] < _valor) {
-        indice++;
+    int64_t index = 0;
+    while (index < prime_num->size && prime_num->primes[index] < num_value) {
+        index++;
     }
-    return indice;
+    return index;
 }
-int64_t create_task(int64_t thread, int64_t cantidad_datos
-        , int64_t cantidad_threads) {
-    int64_t min = (thread > (cantidad_datos % cantidad_threads))
-        ? cantidad_datos % cantidad_threads : thread;
-    int64_t division = floorl(cantidad_datos/cantidad_threads);
+int64_t create_task(int64_t thread, int64_t data_amount
+        , int64_t thread_number) {
+    int64_t min = (thread > (data_amount % thread_number))
+        ? data_amount % thread_number : thread;
+    int64_t division = floorl(data_amount/thread_number);
     return (thread * division) + min;
 }
