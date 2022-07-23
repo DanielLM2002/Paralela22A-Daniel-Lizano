@@ -129,6 +129,9 @@ void even_sum(int64_t number, sums_t* un_sums, primos_t* primes
     assert(primes);
     assert(un_sums);
     int64_t current_number = labs(number);
+    #pragma omp parallel for num_threads(cantidad_threads) default(none)\
+        shared(current_number, un_sums, primes, max_prime\
+            , amount_thread) schedule(dynamic)
     for (int first_part = 0; first_part < max_prime
             ; first_part++) {
         int64_t second_part = first_part;
@@ -153,6 +156,9 @@ void odd_sum(int64_t number, sums_t* un_sums, primos_t* primes
     assert(primes);
     assert(un_sums);
     int64_t current_number = labs(number);
+    #pragma omp parallel for num_threads(cantidad_threads) default(none)\
+        shared(current_number, un_sums, primes, max_prime\
+                , amount_thread) schedule(dynamic)
     for (int first_part = 0; first_part < max_prime
             ; first_part++) {
         int64_t second_part = first_part;
