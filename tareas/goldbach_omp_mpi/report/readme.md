@@ -84,12 +84,12 @@ Como se puede apreciar en el gráfico el mayor incremento de velocidad se da cua
 Para continuar con la investigacion de la concurrencia, se realizó una comparación entre OpenMP y Pthreads para ver si es mejor utilizar una solución declarativa o no.
 Para esta comparación se usó el cosde de prueba input020.txt, ya que este cuenta con un tamaño considerable, por lo que se podrá hacer que los hilos trabajen a su maxima capacidad siempre usando el mismo tipo de mapeo. El mapeo a usar es el dinámico.
 
-|                  | pthread | Open MP  |
+|                  | Pthread Optimizado| Open MP  |
 |------------------|------------------|------------------|
 |Hilos             | 10               | 10               |
-|Tiempo            | 190.8 segundos         | 160.32 segundos         |
-|Velocidad         | 5.60            | 5.93             |
-|Eficiencia        | 0.70             | 0.83             |
+|Tiempo            | 190.8 segundos         | 188.32 segundos         |
+|Velocidad         | 5.60            | 5.612             |
+|Eficiencia        | 0.70             | 0.705             |
 
 Los resultados de dicha tabla se pueden ver en el grafico siguiente con el cual tambien se compara con las versiones pasadas del codigo
 
