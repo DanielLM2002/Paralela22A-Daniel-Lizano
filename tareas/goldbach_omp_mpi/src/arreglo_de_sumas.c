@@ -9,11 +9,9 @@
 
 #include "arreglo_de_sumas.h"
 
-/* -------------------------------*/
 /**
  * @brief Inicializa el arreglo diamico con una capacity inicial de 2.
  */
-/* ---------------------------------*/
 sums_t* sums_create(void) {
     sums_t* sums = (sums_t*) calloc(1, sizeof(sums_t));
     if (sums) {
@@ -24,11 +22,10 @@ sums_t* sums_create(void) {
     return sums;
 }
 
-/* -------------------------------*/
 /**
  * @brief Destruye los elementos creados y borra los valores anteriores.
  */
-/* ---------------------------------*/
+
 void sums_destroy(sums_t* sum_num, bool is_valid_num) {
     assert(sum_num);
     sum_num->capacity = 0;
